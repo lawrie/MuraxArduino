@@ -1,6 +1,6 @@
 #!/bin/sh -e
-ARCHIVE=~/public_html/fpgarduino/bm/fpgarduino.zip
-ARDUINODIR=$(pwd)/../../../../../
+ARCHIVE=/tmp/MuraxArduino.zip
+ARDUINODIR=~/MuraxArduino
 TOOLDIR=$(pwd)
 
 cd /tmp
@@ -8,7 +8,7 @@ rm -rf arduino
 ln -sf "${ARDUINODIR}" arduino
 
 rm -f $ARCHIVE
-zip -r $ARCHIVE arduino/examples arduino/libraries arduino/tools
+zip -r $ARCHIVE arduino/libraries
 rm -rf pack
 mkdir -p pack
 cd pack
@@ -25,12 +25,6 @@ rm -rf arduino
 unzip $ARCHIVE
 rm -f $ARCHIVE
 zip -r $ARCHIVE arduino
-# unzip -tv $ARCHIVE
-rm -f ~/.arduino15/staging/packages/fpgarduino.zip
 sha256sum $ARCHIVE
 ls -al $ARCHIVE
 
-#cd ~/public_html/fpgarduino
-#./mkjson.sh > package_f32c_core_index.json
-#cd bm
-#./mkjson.sh > package_f32c_core_index.json
