@@ -28,7 +28,6 @@
  */
 
 #include <sys/endian.h>
-#include <mips/_fpmath.h>
 
 #ifndef _IEEE_WORD_ORDER
 #define	_IEEE_WORD_ORDER	_BYTE_ORDER
