@@ -21,18 +21,6 @@
 
 __BEGIN_DECLS
 
-struct pwm_enable_bitmask_s
-{
-  uint32_t control_and;   // first and'ed to preserve bits
-  uint32_t control_or;    // last or'ed to set bits that enable this timer
-  uint32_t control_and_or;// 1-use and logic, 0-use or logic
-  uint32_t apply;
-  uint8_t ocp_start;
-  uint8_t ocp_stop;
-  uint32_t ocp_ie;
-  uint32_t ocp_if;
-};
-
 /*
  * \brief SAM3 products have only one reference for ADC
  */
@@ -40,11 +28,6 @@ typedef enum _eAnalogReference
 {
   AR_DEFAULT,
 } eAnalogReference ;
-
-/*
- * array index is pwm channel number starting from 0
- */
-extern const struct pwm_enable_bitmask_s pwm_enable_bitmask[];
 
 /*
  * \brief Configures the reference voltage used for analog input (i.e. the value used as the top of the input range).

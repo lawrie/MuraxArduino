@@ -11,8 +11,6 @@ static uint8_t analog_write_resolution_bits = 8;
 /* new arduino uses 980 Hz */
 static uint32_t analog_write_frequency = 980;
 
-const struct pwm_enable_bitmask_s pwm_enable_bitmask[] = VARIANT_PWM_CHANNEL_ENABLE;
-
 /* todo: support analogWriteResolution(bits)
 ** default is 8 for old arduino,
 ** new arduino can use up to 12

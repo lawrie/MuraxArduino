@@ -32,8 +32,6 @@ __BEGIN_DECLS
 #include <stdio.h>
 #include <stdarg.h>
 
-#define EXTERNAL_NUM_INTERRUPTS 2
-
 typedef void (*voidFuncPtr)(void);
 
 __END_DECLS

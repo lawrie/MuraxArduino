@@ -48,8 +48,6 @@ const volatile uint32_t *pintype2ioaddr_in[PIN_TYPE_SIZE] = {
 const struct variant_pin_map_s variant_pin_map[] = VARIANT_DIGITAL_PIN_MAP;
 const uint32_t variant_pin_map_size = sizeof(variant_pin_map);
 
-volatile uint32_t *EMARD_TIMER = EMARD_TIMER_ADDRESS;
-
 static void
 update_tsc(void)
 {
