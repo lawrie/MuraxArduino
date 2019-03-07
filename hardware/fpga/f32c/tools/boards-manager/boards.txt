@@ -13,7 +13,7 @@ menu.model=Model
 #
 # ULX3S (Lattice ECP5 12F/25F/45F/85F)
 #
-fpga_ulx3s.name=ULX3S (Lattice ECP5)
+fpga_ulx3s.name=Murax ULX3S (Lattice ECP5)
 fpga_ulx3s.build.board=F32C_FPGA_ULX3S
 fpga_ulx3s.build.f_cpu=100000000
 fpga_ulx3s.build.variant=generic
@@ -107,9 +107,9 @@ fpga_ulx3s.menu.pinmap.generic=generic
 fpga_ulx3s.menu.pinmap.generic.build.variant=generic
 
 #
-# FPGArduino Generic f32c SoC
+# MuraxArduino Generic f32c SoC
 #
-fpga_generic.name=Generic FPGA board
+fpga_generic.name=Generic Murax FPGA board
 fpga_generic.build.mcu=f32c
 fpga_generic.build.core=f32c
 fpga_generic.build.init=0
