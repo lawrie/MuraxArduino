@@ -71,6 +71,9 @@
 #define	IO_SIO_STATUS	IO_ADDR(0x10004)	/* word, RD */
 #define	IO_SIO_BAUD	IO_ADDR(0x10008)	/* word, WR */
 
+#define	IO_SPI_FLASH	IO_ADDR(0x340)	/* half, RW */
+#define	IO_SPI_SDCARD	IO_ADDR(0x350)	/* half, RW */
+
 #define	IO_CPU_RESET	IO_ADDR(0x7F0)	/* byte, WR */
 
 
