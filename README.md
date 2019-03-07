@@ -10,3 +10,8 @@ Select pull down menu Tools->Board->Board Manager
 and install Murax Arduino.
 
 Then select, Board: Generic Murax FPGA board, CPU Speed: 50 Mhz, RAM Size: 32KB BRAM internal, port /dev/tyyUSB0
+
+The Murax configuration needed is at https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce, 
+but there is a copy of the BlackIce II binary at fpga/Blackice/bin/toplevel.bin and the pcf file is
+at fpga/BlackIce/toplevel.pcf, so you can try MuraxArduino out without installing SpinalHDL.
+
