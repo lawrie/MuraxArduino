@@ -15,12 +15,12 @@
         {
           "name":"MuraxArduino",
           "architecture":"Vexriscv",
-          "version":"1.0.0",
+          "version":"0.0.1",
           "category":"FPGA",
-          "url":"https://raw.githubusercontent.com/f32c/fpgarduino/master/fpgarduino.zip",
-          "archiveFileName":"fpgarduino.zip",
-          "checksum":"SHA-256:9fdde2436e14297f8bc9f1fe73a83d3307dde673be62c0294b896b83904fe64d",
-          "size":"1396066",
+          "url":"https://raw.githubusercontent.com/lawrie/MuraxArduino/master/MuraxArduino.zip",
+          "archiveFileName":"MuraxArduino.zip",
+          "checksum":"SHA-256:8485fd94ab874c4d023018595b4cf2ebe93758cb8a8feeb5b19b5f841c1085ba",
+          "size":"627531",
           "help":
           {
             "online":"http://github.com/lawrie/MuraxArduino"
@@ -28,7 +28,7 @@
           "boards":
           [ 
             {
-              "name":"FPGA"
+              "name":"Murax FPGA"
             }
           ],
           "toolsDependencies":
