@@ -30,11 +30,12 @@ pulseIn(uint32_t pin, bool state, uint32_t timeout)
 
   (*(volatile uint32_t *)IO_PULSE_TIMEOUT) = timeout;
   (*(volatile uint32_t *)IO_PULSE_VALUE) = state;
-  int pulse; 
-  while(1) {
+  uint32_t pulse; 
+  for(int i=0;i<100000;i++) {
     pulse = (*(volatile uint32_t *)IO_PULSE_LENGTH);
     if (pulse != 0) return pulse;
   }
+  return 0;
 }
 
 extern uint32_t
