@@ -1,6 +1,5 @@
 /*-
- * Copyright (c) 2003 Mike Barcroft <mike@FreeBSD.org>
- * Copyright (c) 2002 David Schultz <das@FreeBSD.ORG>
+ * Copyright (c) 2002, 2003 David Schultz <das@FreeBSD.ORG>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,54 +23,34 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $FreeBSD: stable/9/lib/libc/include/fpmath.h 186461 2008-12-23 22:20:59Z marcel $
+ * $FreeBSD: stable/9/lib/libc/mips/_fpmath.h 178580 2008-04-26 12:08:02Z imp $
  */
 
-#include <sys/endian.h>
-#include <mips/_fpmath.h>
-
-#ifndef _IEEE_WORD_ORDER
-#define	_IEEE_WORD_ORDER	_BYTE_ORDER
-#endif
-
-union IEEEf2bits {
-	float	f;
+union IEEEl2bits {
+	long double	e;
 	struct {
-#if _BYTE_ORDER == _LITTLE_ENDIAN
-		unsigned int	man	:23;
-		unsigned int	exp	:8;
+#ifndef __MIPSEB__
+		unsigned int	manl	:32;
+		unsigned int	manh	:20;
+		unsigned int	exp	:11;
 		unsigned int	sign	:1;
-#else /* _BIG_ENDIAN */
-		unsigned int	sign	:1;
-		unsigned int	exp	:8;
-		unsigned int	man	:23;
+#else
+		unsigned int		sign	:1;
+		unsigned int		exp	:11;
+		unsigned int		manh	:20;
+		unsigned int		manl	:32;
 #endif
 	} bits;
 };
 
-#define	DBL_MANH_SIZE	20
-#define	DBL_MANL_SIZE	32
+#define	LDBL_NBIT	0
+#define	mask_nbit_l(u)	((void)0)
+#define	LDBL_IMPLICIT_NBIT
 
-union IEEEd2bits {
-	double	d;
-	struct {
-#if _BYTE_ORDER == _LITTLE_ENDIAN
-#if _IEEE_WORD_ORDER == _LITTLE_ENDIAN
-		unsigned int	manl	:32;
-#endif
-		unsigned int	manh	:20;
-		unsigned int	exp	:11;
-		unsigned int	sign	:1;
-#if _IEEE_WORD_ORDER == _BIG_ENDIAN
-#if 0	/* XXX MARKO revisit! */
-		unsigned int	manl	:32;
-#endif
-#endif
-#else /* _BIG_ENDIAN */
-		unsigned int	sign	:1;
-		unsigned int	exp	:11;
-		unsigned int	manh	:20;
-		unsigned int	manl	:32;
-#endif
-	} bits;
-};
+#define	LDBL_MANH_SIZE	20
+#define	LDBL_MANL_SIZE	32
+
+#define	LDBL_TO_ARRAY32(u, a) do {			\
+	(a)[0] = (uint32_t)(u).bits.manl;		\
+	(a)[1] = (uint32_t)(u).bits.manh;		\
+} while(0)
