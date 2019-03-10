@@ -70,8 +70,7 @@ void TwoWire::flush(void)
 
 uint8_t TwoWire::endTransmission(uint8_t sendStop)
 {
-  for (int i = 0; i < 1000; i++) asm volatile ("");
-  I2C_RX_DATA = 0;
+  for (int i = 0; i < 50; i++) asm volatile ("");
   I2C_MASTER_STATUS = I2C_MASTER_STOP; 
   for(int i=0;i<MAX_TRIES && (I2C_MASTER_STATUS & I2C_MASTER_IS_BUSY);i++) {};
   return 0;
@@ -98,6 +97,9 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t length, uint8_t sendStop)
     buf[i] = I2C_RX_DATA & 0xff;
     num++;
   }
+  
+  I2C_RX_DATA = 0;
+  for (int i = 0; i < 4000; i++) asm volatile ("");
 
   endTransmission();
   return num;
