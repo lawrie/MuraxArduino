@@ -39,9 +39,11 @@ pins 8-15 : Input : 8 and 9 are buttons 1 and 2, 10-13 are the 4 switches
 pins 16-31: GPIO  : These corresspond to Pmods 3, 4, 5 and 6.
 ```
 
+This corresponds to Arduino pinMode, digitalRead and digitalWrite methods. The INPUT_PULLUP mode is not implemented sand treated as INPUT.
+
 #### UART
 
-Maps to the Blackice USB 2 connector on pins 85 and 88. Accesssed by Arduino Serial class.
+Maps to the Blackice USB 2 connector on pins 85 and 88. Accesssed by Arduino Serial class. 
 
 #### Timer
 
@@ -49,13 +51,13 @@ A timer is configured but not currently mapped to the Arduino API.
 
 #### MachineTimer
 
-A 32-bit microsecond machine timer is used for the implementation of the milis, micros, delay and delayMicroseconds methods.
+A 32-bit microsecond machine timer is used for the implementation of the millis, micros, delay and delayMicroseconds methods.
 
 #### I2C 
 
 On pins 95 (SDA) and 93 (SCL). 
 
-Accessed by Arduino Wire class.
+Accessed by the Arduino Wire class.
 
 Both master and slave are supported, but only master tested.
 
@@ -87,15 +89,15 @@ Corresponds to Arduino tone() and notTone() methods. Pin number is ignored.
 
 #### 7-segment LED display
 
-Corresponds to Digilent Pmod on pmods 7 and 9.
+Uses a Digilent PMODSSD on pmods 7 and 9.
 
-Need to write a very simple library for this.
+Need to write a very simple library for this. It displays hex values.
 
 #### shiftIn
 
 On BlackIce pins 31 and 32.
 
-Corresponds to Arduino shiftOut method.
+Corresponds to Arduino shiftIn method.
 
 #### shiftOut
 
@@ -117,5 +119,8 @@ The Arduino methods attachInterrupt and detachInterrupt are not implemented.
 
 The interrupts and noInterrupts methods and no ops.
 
+The analogRead method is not implemented. AnalogReference is a no op.
 
+The methods analogReadResolution and AnalogWriteResolution are no ops.
 
+USB classes are not supported.
