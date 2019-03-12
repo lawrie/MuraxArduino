@@ -8,6 +8,7 @@ set_io LED4 71
 set_io UART_RX 88
 set_io UART_TX 85
 set_io PWM 94
+set_io SERVO 25
 set_io TONE 26
 set_io SHIFT_OUT_DATA 32
 set_io SHIFT_OUT_CLK 31
