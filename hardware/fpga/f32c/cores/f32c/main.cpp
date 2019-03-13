@@ -20,35 +20,11 @@
 #define ARDUINO_MAIN
 #include "Arduino.h"
 
-void f32c_specific_initialization(void)
-{
-  // disable interrupts and clear their flags
-
-  // GPIO interrupts are handled specific
-  // because same pin can have falling and rising interrupt
-  // while we cannot register MIPS ISR more than once to the
-  // same interrupt source so current content of GPIO flags
-  // is checked for this. We need to clean it at startup
-  // otherwise GPIO interrupt will work only for the first
-  // sketch upload after bitstream is uploaded.
-  *((volatile uint32_t *)IO_GPIO_RISE_IE) = 0;
-  *((volatile uint32_t *)IO_GPIO_FALL_IE) = 0;
-  *((volatile uint32_t *)IO_GPIO_RISE_IF) = ~0;
-  *((volatile uint32_t *)IO_GPIO_FALL_IF) = ~0;
-}
-
 /*
  * \brief Main entry point of Arduino application
  */
 int main( void )
 {
-//	init();
-        // Generic boards will not have f32c specific intialization.
-        // This is support for picorv32+attosoc which should
-        // work when generic RISC-V board is selected
-        #if __F32C__ == 1
-        f32c_specific_initialization();
-        #endif
 	setup();
 
 	do {
