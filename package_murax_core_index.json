@@ -19,8 +19,8 @@
           "category":"FPGA",
           "url":"https://raw.githubusercontent.com/lawrie/MuraxArduino/master/MuraxArduino.zip",
           "archiveFileName":"MuraxArduino.zip",
-          "checksum":"SHA-256:1eacd007ef9e28b3d8d97ea64f1be0a529d19ecc4b1b44aafd7783af8aaa41fe",
-          "size":"637330",
+          "checksum":"SHA-256:9e4711476d3bdd6ad99ddfa5c7d3951885e3b7b5281c0fce6b8e0332e62c3781",
+          "size":"629174",
           "help":
           {
             "online":"http://github.com/lawrie/MuraxArduino"
