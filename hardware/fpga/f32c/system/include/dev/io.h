@@ -39,10 +39,6 @@
 
 #define	IO_GPIO_DATA	IO_ADDR(0x004)	/* word, RW */
 #define	IO_GPIO_CTL	IO_ADDR(0x008)	/* word, WR */
-#define	IO_GPIO_RISE_IF	IO_ADDR(0x008)	/* word, RW (clear only) */
-#define	IO_GPIO_RISE_IE	IO_ADDR(0x00C)	/* word, RW */
-#define	IO_GPIO_FALL_IF	IO_ADDR(0x010)	/* word, RW (clear only) */
-#define	IO_GPIO_FALL_IE	IO_ADDR(0x014)	/* word, RW */
 #define	IO_GPIO_INPUT	IO_ADDR(0x000)	/* word, RW */
 
 #define	IO_PWM_DUTY	IO_ADDR(0x30000)	/* word , WR */
@@ -65,39 +61,18 @@
 
 #define	IO_MACHINE_TIMER IO_ADDR(0xB0000)	 /* word, RD */
 
-#define	IO_TIMER	IO_ADDR(0x100)	/* 16-byte, WR */
-
 #define	IO_SIO_BYTE	IO_ADDR(0x10000)	/* word, RW */
 #define	IO_SIO_STATUS	IO_ADDR(0x10004)	/* word, RD */
 #define	IO_SIO_BAUD	IO_ADDR(0x10008)	/* word, WR */
 
+// Currently needed to build libc
 #define	IO_SPI_FLASH	IO_ADDR(0x340)	/* half, RW */
 #define	IO_SPI_SDCARD	IO_ADDR(0x350)	/* half, RW */
-
-#define	IO_CPU_RESET	IO_ADDR(0x7F0)	/* byte, WR */
 
 
 /* SIO status bitmask */
 #define	SIO_TX_BUSY	0x4
 #define	SIO_RX_OVERRUN	0x2
 #define	SIO_RX_FULL	0x1
-
-/* Pushbutton input bitmask */
-#define	ROT_A		0x40
-#define	ROT_B		0x20
-#define	BTN_CENTER	0x10
-#define	BTN_UP		0x08
-#define	BTN_DOWN	0x04
-#define	BTN_LEFT	0x02
-#define	BTN_RIGHT	0x01
-
-/* PMOD output mask */
-#define	PMOD_J1_MASK	0x0f
-#define	PMOD_J2_MASK	0xf0
-
-/* LCD control output bitmask */
-#define	LCD_DATA	0x0f
-#define	LCD_RS		0x10
-#define	LCD_E		0x20
 
 #endif /* !_IO_H_ */
