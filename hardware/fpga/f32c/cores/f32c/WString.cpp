@@ -22,9 +22,7 @@
 #include "WString.h"
 #include "itoa.h"
 
-#ifdef NOTYET /* XXX Marko FIXME! */
 #include "avr/dtostrf.h"
-#endif
 
 extern "C" {
 #include "avr/pgmspace.h"
@@ -114,7 +112,6 @@ String::String(unsigned long value, unsigned char base)
 	*this = buf;
 }
 
-#ifdef NOTYET /* XXX Marko FIXME! */
 String::String(float value, unsigned char decimalPlaces)
 {
 	init();
@@ -128,7 +125,6 @@ String::String(double value, unsigned char decimalPlaces)
 	char buf[33];
 	*this = dtostrf(value, (decimalPlaces + 2), decimalPlaces, buf);
 }
-#endif /* XXX Marko FIXME! */
 
 String::~String()
 {
@@ -331,7 +327,6 @@ unsigned char String::concat(unsigned long num)
 	return concat(buf, strlen(buf));
 }
 
-#ifdef NOTYET /* XXX Marko FIXME! */
 unsigned char String::concat(float num)
 {
 	char buf[20];
@@ -345,7 +340,6 @@ unsigned char String::concat(double num)
 	char* string = dtostrf(num, 4, 2, buf);
 	return concat(string, strlen(string));
 }
-#endif /* XXX Marko FIXME! */
 
 unsigned char String::concat(const __FlashStringHelper * str)
 {
@@ -748,13 +742,13 @@ void String::trim(void)
 /*  Parsing / Conversion                     */
 /*********************************************/
 
-#ifdef NOTYET /* XXX Marko FIXME! */
 long String::toInt(void) const
 {
-	if (buffer) return atol(buffer);
+	if (buffer) return strtol(buffer, NULL, 0);
 	return 0;
 }
 
+#ifdef NOTYET /* XXX Marko FIXME! */
 float String::toFloat(void) const
 {
 	if (buffer) return float(atof(buffer));
