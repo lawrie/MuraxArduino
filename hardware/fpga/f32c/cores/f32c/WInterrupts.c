@@ -4,13 +4,14 @@
 
 __BEGIN_DECLS
 
-#ifdef __riscv
-/* F32C RISC-V is early and currently doesn't have interrupts
-** when implemented, #ifdef __riscv
-** can be used for code than needs to be specifically compiled
-** for riscv architecture
-*/
-#warning "RISC-V doesn't have interrupts yet. Choose Tools->CPU Architecture->MIPS"
-#endif // __riscv
+void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode) {
+  (*(volatile uint32_t*)IO_PIN_INTERRUPT) = callback;
+  (*(volatile uint32_t*)IO_PIN_INTERRUPT_CONFIG) = (mode == FALLING ? 2 : 0) | (mode == RISING ? 1 : 0);
+}
 
+void detachInterrupt(uint32_t pin) {
+  (*(volatile uint32_t*)IO_PIN_INTERRUPT) = 0;
+  (*(volatile uint32_t*)IO_PIN_INTERRUPT_CONFIG) = 0;
+}
+ 
 __END_DECLS
