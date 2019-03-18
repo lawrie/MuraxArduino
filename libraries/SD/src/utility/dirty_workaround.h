@@ -3,14 +3,14 @@
 #define __arm__
 
 #if 1
-#define SCK  24
-#define SS   25
-#define MOSI 26
-#define MISO 5
+#define SCK  10
+#define SS   11
+#define MOSI 13
+#define MISO 8
 #define softdelay()
 #endif
 
-// #define SOFTWARE_SPI
+#define SOFTWARE_SPI
 
 #define cli() noInterrupts()
 #define sei() interrupts()

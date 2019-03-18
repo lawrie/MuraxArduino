@@ -17,10 +17,10 @@
   [ 7] = { PIN_TYPE_GPIO,     7,  OCP_NONE, ICP_NONE }, \
   [ 8] = { PIN_TYPE_INPUT,    8,  OCP_NONE, ICP_NONE }, \
   [ 9] = { PIN_TYPE_INPUT,    9,  OCP_NONE, ICP_NONE }, \
-  [10] = { PIN_TYPE_INPUT,   10,  OCP_NONE, ICP_NONE }, \
-  [11] = { PIN_TYPE_INPUT,   11,  OCP_NONE, ICP_NONE }, \
-  [12] = { PIN_TYPE_INPUT,   12,  OCP_NONE, ICP_NONE }, \
-  [13] = { PIN_TYPE_INPUT,   13,  OCP_NONE, ICP_NONE }, \
+  [10] = { PIN_TYPE_GPIO,    10,  OCP_NONE, ICP_NONE }, \
+  [11] = { PIN_TYPE_GPIO,    11,  OCP_NONE, ICP_NONE }, \
+  [12] = { PIN_TYPE_GPIO,    12,  OCP_NONE, ICP_NONE }, \
+  [13] = { PIN_TYPE_GPIO,    13,  OCP_NONE, ICP_NONE }, \
   [14] = { PIN_TYPE_GPIO,    14,  OCP_NONE, ICP_NONE }, \
   [15] = { PIN_TYPE_GPIO,    15,  OCP_NONE, ICP_NONE }, \
   [16] = { PIN_TYPE_GPIO,    16,  OCP_NONE, ICP_NONE }, \
