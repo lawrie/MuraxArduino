@@ -67,6 +67,8 @@ UARTClass::sio_getchar(int blocking)
 int
 UARTClass::sio_putchar(int c, int blocking)
 {
+  while (((serbase[1] >> 16) & 0xFF) == 0); // Assume blocking. Wait for availability
+
   serbase[0] = c;
   return 0;
 }
