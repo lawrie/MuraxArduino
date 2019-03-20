@@ -57,6 +57,10 @@ static int used_cnt = 0;
 static void
 malloc_init()
 {
+	heap = (void *) &_end;
+	heap[0] = 0x80010000; // Force heap to 64kb
+	return;
+
 	int i;
 	uint32_t off, ram_top;
 	volatile uint32_t *probe;
