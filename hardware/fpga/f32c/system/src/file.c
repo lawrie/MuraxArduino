@@ -36,6 +36,7 @@
 #include <stdlib.h>
 
 #include <fatfs/ff.h>
+#include <dev/sio.h>
 
 #define MAXFILES 8
 

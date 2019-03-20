@@ -26,7 +26,7 @@
  */
 
 #include <stdio.h>
-
+#include <dev/sio.h>
 
 __attribute__((optimize("-Os"))) int
 gets(char *cp, int size)
