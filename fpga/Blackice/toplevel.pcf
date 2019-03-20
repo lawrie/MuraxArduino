@@ -26,27 +26,27 @@ set_io SPI_SS 11
 set_io ECHO 34
 set_io TRIGGER 33
 
-set_io SW1 37
-set_io SW2 38
-set_io SW3 39
-set_io SW4 41
+set_io GPIO[0] 37
+set_io GPIO[1] 38
+set_io GPIO[2] 39
+set_io GPIO[3] 41
+set_io GPIO[6] 143
+set_io GPIO[7] 114
+set_io GPIO[8] 112
+set_io GPIO[9] 107
+set_io GPIO[10] 144
+set_io GPIO[11] 113
+set_io GPIO[12] 110
+set_io GPIO[13] 106
+set_io GPIO[14] 105
+set_io GPIO[15] 102
+set_io GPIO[16] 99
+set_io GPIO[17] 97
+set_io GPIO[18] 104
+set_io GPIO[19] 101
+set_io GPIO[20] 98
+set_io GPIO[21] 96
 
-set_io GPIO[0] 143
-set_io GPIO[1] 114
-set_io GPIO[2] 112
-set_io GPIO[3] 107
-set_io GPIO[4] 144
-set_io GPIO[5] 113
-set_io GPIO[6] 110
-set_io GPIO[7] 106
-set_io GPIO[8] 105
-set_io GPIO[9] 102
-set_io GPIO[10] 99
-set_io GPIO[11] 97
-set_io GPIO[12] 104
-set_io GPIO[13] 101
-set_io GPIO[14] 98
-set_io GPIO[15] 96
 
 set_io D 1
 set_io SEG[0] 2
