@@ -51,9 +51,9 @@ endif
 
 ifeq ($(LIB),c)
 
- CFILES = assert.c atoi.c diskio.c div.c div64.c fatfs.c \
+ CFILES = assert.c atoi.c div.c div64.c fatfs.c \
 	file.c gets.c malloc.c memcmp.c memcpy.c memmove.c \
-	memset.c mul.c printf.c qsort.c random.c sdcard.c \
+	memset.c mul.c printf.c qsort.c random.c \
 	spi.c sprintf.c strcasecmp.c strcpy.c strncpy.c \
 	strstr.c strtol.c
 
