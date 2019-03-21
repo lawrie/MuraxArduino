@@ -25,8 +25,9 @@
 #include "wiring_private.h"
 
 uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
-	(*(volatile uint32_t*) IO_SHIFT_IN_PRE_SCALE) = 1000;
+	(*(volatile uint32_t*) IO_SHIFT_IN_PRE_SCALE) = 50;
 	(*(volatile uint32_t*) IO_SHIFT_IN_BIT_ORDER) = bitOrder;
+        delayMicroseconds(100);
 	return (*(volatile uint32_t*) IO_SHIFT_IN_BYTE_VALUE);
 }
 
