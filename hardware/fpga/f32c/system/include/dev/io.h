@@ -70,10 +70,6 @@
 #define IO_TIMER_INTERRUPT 0x80002000
 #define IO_PIN_INTERRUPT 0x80002004
 
-// Currently needed to build libc
-#define	IO_SPI_FLASH	IO_ADDR(0x340)	/* half, RW */
-#define	IO_SPI_SDCARD	IO_ADDR(0x350)	/* half, RW */
-
 /* SIO status bitmask */
 #define	SIO_TX_BUSY	0x4
 #define	SIO_RX_OVERRUN	0x2
