@@ -25,6 +25,7 @@
 #include "wiring_private.h"
 
 uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
+	(*(volatile uint32_t*) IO_MUX) |= 1; // Switch clock pin to shiftIn peripheral
 	(*(volatile uint32_t*) IO_SHIFT_IN_PRE_SCALE) = 50;
 	(*(volatile uint32_t*) IO_SHIFT_IN_BIT_ORDER) = bitOrder;
         delayMicroseconds(100);
@@ -33,6 +34,7 @@ uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
 
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val)
 {
+	(*(volatile uint32_t*) IO_MUX) |= 2; // Switch clock and data pins to shiftOut peripheral
 	(*(volatile uint32_t*) IO_SHIFT_OUT_PRE_SCALE) = 1000;
 	(*(volatile uint32_t*) IO_SHIFT_OUT_BIT_ORDER) = bitOrder;
 	(*(volatile uint32_t*) IO_SHIFT_OUT_BYTE_VALUE) = val;
