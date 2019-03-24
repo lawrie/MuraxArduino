@@ -55,7 +55,7 @@ ifeq ($(LIB),c)
 	gets.c malloc.c memcmp.c memcpy.c memmove.c \
 	memset.c mul.c printf.c qsort.c random.c \
 	sprintf.c strcasecmp.c strcpy.c strncpy.c \
-	strstr.c strtol.c
+	strstr.c strtol.c strrchr.c
 
  CFILES += float/adddf3.c float/addsf3.c float/ashldi3.c float/clzsi2.c \
 	float/comparedf2.c float/comparesf2.c float/divdf3.c float/divsf3.c \
