@@ -1,35 +1,48 @@
+# Clock
 set_io CLK 129
 
+# Buttons
 set_io BUT1 63
 set_io BUT2 64
 
+# Leds
 set_io LED1 70
 set_io LED2 68
 set_io LED3 67
 set_io LED4 71
 
+# Uart
 set_io UART_RX 88
 set_io UART_TX 85
 
+# PWM variants
 set_io PWM 94
 set_io SERVO 25
 set_io TONE 26
 
+# shiftIn and shiftOut
+set_io SHIFT_IN_DATA 22
+set_io SHIFT_IN_CLK 21
 set_io SHIFT_OUT_DATA 32
 set_io SHIFT_OUT_CLK 31
 
+# SPI
 set_io SPI_SCK 18
 set_io SPI_MOSI 17
 set_io SPI_MISO 12
 set_io SPI_SS 11
 
+# Ping sensor with pulseIn
 set_io ECHO 34
 set_io TRIGGER 33
 
+# GPIO
 set_io GPIO[0] 37
 set_io GPIO[1] 38
 set_io GPIO[2] 39
 set_io GPIO[3] 41
+set_io GPIO[4] 87
+set_io GPIO[5] 90
 set_io GPIO[6] 143
 set_io GPIO[7] 114
 set_io GPIO[8] 112
@@ -47,7 +60,7 @@ set_io GPIO[19] 101
 set_io GPIO[20] 98
 set_io GPIO[21] 96
 
-
+# 7-segment display
 set_io D 1
 set_io SEG[0] 2
 set_io SEG[1] 9
@@ -57,11 +70,15 @@ set_io SEG[4] 16
 set_io SEG[5] 19
 set_io SEG[6] 20
 
-set_io SHIFT_IN_DATA 22
-set_io SHIFT_IN_CLK 21
-
+# i2c
 set_io SDA 95
 set_io SCL 93
+
+# Jtag
+set_io JTAG_TCK 8
+set_io JTAG_TDI 7
+set_io JTAG_TDO 4
+set_io JTAG_TMS 3
 
 # SRAM
 set_io ADR[0] 137
