@@ -46,7 +46,7 @@ void analogReference( eAnalogReference ulMode )
 
 uint32_t analogRead(uint32_t ulPin)
 {
-  return 0;
+  return (*(volatile uint32_t *) (IO_ANALOG + ((ulPin - A0) << 2)));
 }
 
 /* input capture setting */
