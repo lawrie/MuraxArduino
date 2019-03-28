@@ -32,6 +32,14 @@ set_io SPI_MOSI 17
 set_io SPI_MISO 12
 set_io SPI_SS 11
 
+# QSPI
+set_io QSS      81
+set_io QCK      82
+set_io QD[0]    83
+set_io QD[1]    84
+set_io QD[2]    79
+set_io QD[3]    80
+
 # Ping sensor with pulseIn
 set_io ECHO 34
 set_io TRIGGER 33
