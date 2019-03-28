@@ -9,7 +9,7 @@ static bool debug = false;
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  QSPI.begin(10000000, QSPI.Mode3);
+  QSPI.begin(5000000, QSPI.Mode3);
   Serial.begin(9600);
   // configure the FPGA
   digitalWrite(LED_BUILTIN, 1);
