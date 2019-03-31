@@ -1,5 +1,6 @@
 # Clock
 set_io CLK 129
+set_io GRESET 128
 
 # Buttons
 set_io BUT1 63
