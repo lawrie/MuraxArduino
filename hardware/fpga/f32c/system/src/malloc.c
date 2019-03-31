@@ -32,7 +32,7 @@
 
 extern void *_end;
 
-static uint32_t *heap;
+uint32_t *heap;
 
 #define	GET_LEN(len)	((len) & ~0x80000000)
 #define	IS_FREE(len)	((len) & 0x80000000)
@@ -59,6 +59,7 @@ malloc_init()
 {
 	heap = (void *) &_end;
 	heap[0] = 0x80010000; // Force heap to 64kb
+        heap[0x10000] = 0;
 	return;
 
 	int i;
@@ -178,7 +179,7 @@ realloc(void *oldptr, size_t size)
 	newptr = malloc(size);
 	if (oldptr != NULL && newptr != NULL) {
 		i = ((uint32_t *) oldptr) - heap - 1;
-		copysize = GET_LEN(heap[i]);
+		copysize = GET_LEN(heap[i]) << 2; // Get size in bytes
 		if (size < copysize)
 			copysize = size;
 		memcpy(newptr, oldptr, copysize);
