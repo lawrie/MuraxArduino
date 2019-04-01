@@ -37,7 +37,7 @@ void analogOutputInit( void )
 
 void analogWrite(uint32_t ulPin, uint32_t ulValue)
 {
-    (*(volatile uint32_t *) IO_PWM_DUTY) = ulValue;
+    (*(volatile uint32_t *) (IO_PWM_DUTY + (ulPin << 2))) = ulValue;
 }
 
 void analogReference( eAnalogReference ulMode ) 
