@@ -132,4 +132,7 @@ set_io RAMCS 23
 set_io RAMUB 28
 set_io RAMLB 24
 
+# Debug
+set_io DONE 52 
+set_io DEBUG 49
 
