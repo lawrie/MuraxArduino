@@ -1,6 +1,8 @@
 #ifndef Pins_Arduino_h
 #define Pins_Arduino_h
 
+#define digitalPinToInterrupt(p) (p)
+
 /* PIN_TYPE_* are enum's defined in wiring.h */
 /* PIN_TYPE_OUTPUT is LED */
 /* PIN_TYPE_INPUT is PUSHBUTTON or SWITCH */
