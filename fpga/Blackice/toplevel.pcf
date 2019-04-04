@@ -71,13 +71,13 @@ set_io GPIO[21] 96
 
 # 7-segment display
 set_io D 1
-set_io SEG[0] 2
+set_io SEG[0] 10
 set_io SEG[1] 9
-set_io SEG[2] 10
-set_io SEG[3] 15
-set_io SEG[4] 16
-set_io SEG[5] 19
-set_io SEG[6] 20
+set_io SEG[2] 2
+set_io SEG[3] 20
+set_io SEG[4] 19
+set_io SEG[5] 16
+set_io SEG[6] 15
 
 # i2c
 set_io SDA 95
