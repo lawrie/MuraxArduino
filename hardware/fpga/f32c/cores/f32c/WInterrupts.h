@@ -43,6 +43,9 @@ void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode);
 void detachInterrupt(uint32_t pin);
 void icpFilter(uint32_t pin, uint32_t icp_start, uint32_t icp_stop);
 
+void interrupts(void);
+void noInterrupts(void);
+
 #ifdef __riscv
 #define __enable_irq()
 #define __disable_irq()
