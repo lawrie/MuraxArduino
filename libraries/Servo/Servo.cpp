@@ -2,37 +2,42 @@
 #include "Servo.h"
 
 Servo::Servo() {
+  _pin = -1;
 }
 
 uint8_t Servo::attach(int pin) {
-  return 0;
+  _pin = pin;
+  return pin;
 }
 
 uint8_t Servo::attach(int pin, int min, int max) {
-  return 0;
+  _pin = pin;
+  return pin;
 }
 
 void Servo::detach() {
-  IO_SERVO_PULSE_LENGTH = 0;
+  if (_pin >= 0) IO_SERVO_PULSE_LENGTH[_pin] = 0;
 }
 
 void Servo::write(int value) {
-  IO_SERVO_PULSE_LENGTH = map(value, 0, 180, MIN_PULSE_WIDTH,  MAX_PULSE_WIDTH);
+  if (_pin >= 0) IO_SERVO_PULSE_LENGTH[_pin] = map(value, 0, 180, MIN_PULSE_WIDTH,  MAX_PULSE_WIDTH);
 }
 
 void Servo::writeMicroseconds(int value) {
-  IO_SERVO_PULSE_LENGTH = value;
+  if (_pin >= 0) IO_SERVO_PULSE_LENGTH[_pin] = value;
 }
 
 int Servo::read() { // return the value as degrees 
-  return map(IO_SERVO_PULSE_LENGTH, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH, 0, 180);
+  if (_pin < 0) return 0;
+  return map(IO_SERVO_PULSE_LENGTH[_pin], MIN_PULSE_WIDTH, MAX_PULSE_WIDTH, 0, 180);
 }
 
 int Servo::readMicroseconds() {
-  return IO_SERVO_PULSE_LENGTH;
+  if (_pin < 0) return 0;
+  return IO_SERVO_PULSE_LENGTH[_pin];
 }
 
 bool Servo::attached() {
-  return true;
+  return (_pin >= 0);
 }
 

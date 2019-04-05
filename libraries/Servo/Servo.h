@@ -8,7 +8,7 @@
 #define DEFAULT_PULSE_WIDTH  1500     // default pulse width when servo is attached
 #define REFRESH_INTERVAL    20000     // minumim time to refresh servos in microseconds 
 
-#define IO_SERVO_PULSE_LENGTH (*(volatile uint32_t*)0xF00C0000)
+#define IO_SERVO_PULSE_LENGTH ((volatile uint32_t*)0xF00C0000)
 
 class Servo {
 public:
@@ -21,6 +21,7 @@ public:
   int read();                        // returns current pulse width as an angle between 0 and 180 degrees
   int readMicroseconds();            // returns current pulse width in microseconds for this servo (was read_us() in first release)
   bool attached();                   // return true if this servo is attached, otherwise false 
+private:
+  uint8_t _pin;
 };
-
 #endif
