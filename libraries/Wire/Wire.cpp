@@ -45,16 +45,13 @@ void TwoWire::begin(uint8_t address)
 {
 }
 
-
-static uint8_t status;
-
 void TwoWire::beginTransmission(uint8_t address)
 {
   I2C_TX_DATA = (address << 1) | I2C_TX_VALID | I2C_TX_ENABLE;
   I2C_TX_ACK = I2C_TX_VALID;
   I2C_MASTER_STATUS = I2C_MASTER_START;
   status = 2; // Timeout
-  for(int i=0;i<MAX_TRIES;i++) {
+  for(int i=0;i<I2C_MAX_TRIES;i++) {
     if (!(I2C_TX_ACK & I2C_TX_VALID)) {  // Wait for ack sent
       status = I2C_RX_ACK; // 0 if addresss valid, else 1
       break;
@@ -66,7 +63,7 @@ size_t TwoWire::write(uint8_t data)
 {
   I2C_TX_DATA = data | I2C_TX_ENABLE | I2C_TX_VALID;
   I2C_TX_ACK = I2C_TX_VALID;
-  for(int i=0;i<MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};
+  for(int i=0;i<I2C_MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};
   return 1;
 }
 
@@ -86,12 +83,9 @@ uint8_t TwoWire::endTransmission(uint8_t sendStop)
 {
   for (int i = 0; i < 50; i++) asm volatile ("");
   I2C_MASTER_STATUS = I2C_MASTER_STOP; 
-  for(int i=0;i<MAX_TRIES && (I2C_MASTER_STATUS & I2C_MASTER_IS_BUSY);i++) {};
+  for(int i=0;i<I2C_MAX_TRIES && (I2C_MASTER_STATUS & I2C_MASTER_IS_BUSY);i++) {};
   return status;
 }
-
-static int idx = 0, num = 0;
-static char buf[I2C_MAX_READ+1];
 
 uint8_t TwoWire::requestFrom(uint8_t address, uint8_t length, uint8_t sendStop)
 {
@@ -100,7 +94,7 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t length, uint8_t sendStop)
   I2C_TX_DATA = ((address << 1) | 0x01) | I2C_TX_ENABLE | I2C_TX_VALID;
   I2C_TX_ACK = I2C_TX_VALID;
   I2C_MASTER_STATUS = I2C_MASTER_START;
-  for(int i=0;i<MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};  // Wait for nack sent
+  for(int i=0;i<I2C_MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};  // Wait for nack sent
 
   I2C_RX_DATA = I2C_RX_LISTEN;
   
@@ -109,7 +103,7 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t length, uint8_t sendStop)
   for (int i=0;i<length;i++) {
     I2C_TX_DATA = I2C_TX_VALID;
     I2C_TX_ACK = I2C_TX_VALID | I2C_TX_ENABLE;
-    for(int i=0;i<MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};  // Wait for ack sent
+    for(int i=0;i<I2C_MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};  // Wait for ack sent
     buf[i] = I2C_RX_DATA & 0xff;
     num++;
   }

@@ -57,26 +57,15 @@
 
 #define I2C_MAX_READ 10
 
-#define MAX_TRIES 1000
+#define I2C_MAX_TRIES 1000
 
 class TwoWire : public Stream
 {
   private:
-    static uint8_t rxBuffer[];
-    static uint8_t rxBufferIndex;
-    static uint8_t rxBufferLength;
-
-    static uint8_t txAddress;
-    static uint8_t txBuffer[];
-    static uint8_t txBufferIndex;
-    static uint8_t txBufferLength;
-
-    static uint8_t transmitting;
-    static void onRequestService(void);
-    static void onReceiveService(uint8_t*, int);
-    static void (*user_onRequest)(void);
-    static void (*user_onReceive)(int);
-    static void sda_rising_isr(void);
+    uint8_t status;
+    int idx = 0;
+    int num = 0;
+    char buf[I2C_MAX_READ+1];
   public:
     TwoWire();
     void begin();
