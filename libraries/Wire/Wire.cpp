@@ -35,20 +35,31 @@ void TwoWire::begin(void)
   I2C_TSU_DAT = 5;
 }
 
+// Frequency not yet supported
 void TwoWire::setClock(uint32_t frequency)
 {
 }
 
+// Slave not yet supported
 void TwoWire::begin(uint8_t address)
 {
 }
 
+
+static uint8_t status;
+
 void TwoWire::beginTransmission(uint8_t address)
 {
-  I2C_TX_DATA = (address << 1) | I2C_TX_ENABLE | I2C_TX_VALID;
+  I2C_TX_DATA = (address << 1) | I2C_TX_VALID | I2C_TX_ENABLE;
   I2C_TX_ACK = I2C_TX_VALID;
   I2C_MASTER_STATUS = I2C_MASTER_START;
-  for(int i=0;i<MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};  // Wait for nack sent
+  status = 2; // Timeout
+  for(int i=0;i<MAX_TRIES;i++) {
+    if (!(I2C_TX_ACK & I2C_TX_VALID)) {  // Wait for ack sent
+      status = I2C_RX_ACK; // 0 if addresss valid, else 1
+      break;
+    }
+  }
 }
 
 size_t TwoWire::write(uint8_t data)
@@ -56,12 +67,15 @@ size_t TwoWire::write(uint8_t data)
   I2C_TX_DATA = data | I2C_TX_ENABLE | I2C_TX_VALID;
   I2C_TX_ACK = I2C_TX_VALID;
   for(int i=0;i<MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};
-  return 0;
+  return 1;
 }
 
 size_t TwoWire::write(const uint8_t *data, size_t quantity)
 {
-	return 0;
+  for(int i=0;i<quantity;i++) {
+    write(data[i]);
+  }
+  return quantity;
 }
 
 void TwoWire::flush(void)
@@ -73,7 +87,7 @@ uint8_t TwoWire::endTransmission(uint8_t sendStop)
   for (int i = 0; i < 50; i++) asm volatile ("");
   I2C_MASTER_STATUS = I2C_MASTER_STOP; 
   for(int i=0;i<MAX_TRIES && (I2C_MASTER_STATUS & I2C_MASTER_IS_BUSY);i++) {};
-  return 0;
+  return status;
 }
 
 static int idx = 0, num = 0;
@@ -87,6 +101,8 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t length, uint8_t sendStop)
   I2C_TX_ACK = I2C_TX_VALID;
   I2C_MASTER_STATUS = I2C_MASTER_START;
   for(int i=0;i<MAX_TRIES && (I2C_TX_ACK & I2C_TX_VALID);i++) {};  // Wait for nack sent
+
+  I2C_RX_DATA = I2C_RX_LISTEN;
   
   idx = 0;
   num = 0;
@@ -120,7 +136,10 @@ int TwoWire::read(void)
 
 int TwoWire::peek(void)
 {
-	return 0;
+  if ((num - idx) > 0) {
+    return buf[idx];
+  }
+  return 0;
 }
 
 // alternate function prototypes
