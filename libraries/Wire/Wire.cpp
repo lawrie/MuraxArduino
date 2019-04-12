@@ -69,7 +69,7 @@ size_t TwoWire::write(uint8_t data)
 
 size_t TwoWire::write(const uint8_t *data, size_t quantity)
 {
-  for(int i=0;i<quantity;i++) {
+  for(int i=0;i<(int) quantity;i++) {
     write(data[i]);
   }
   return quantity;
