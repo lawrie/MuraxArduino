@@ -68,7 +68,7 @@ Uart is implemented bu the spinal.lib UartCtrl.
 
 A 32-bit microsecond machine timer is used for the implementation of the millis, micros, delay and delayMicroseconds methods.
 
-MachineTimer is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MacgineTimer.scala.
+MachineTimer is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MachineTimer.scala.
 
 #### Mux
 
