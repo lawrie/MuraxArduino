@@ -28,7 +28,7 @@ If you select the 8Kb BRAM internal option, you get an 8kb device with a bootloa
 
 If you select the 512KB SRAM external option (the default) , you get the Blackice II external SRAM. The bootloader still runs in BRAM and the stack is still in BRAM, but the code and static data is in external SRAM which is mapped to address 0x90000000.
 
-###Peripherals
+### Peripherals
 
 #### GPIO
 
