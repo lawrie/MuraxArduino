@@ -1,6 +1,10 @@
 # MuraxArduino
 
-A version of [f32c/arduino](https://github.com/f32c/arduino) that works with the [SpinalHDL](https://github.com/SpinalHDL/SpinalHDL)  [Vexriscv](https://github.com/SpinalHDL/VexRiscv) [Murax SoC](https://github.com/SpinalHDL/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Murax.scala).
+MuraxArduino is an implementation of an Arduino board for open source FPGAs. It uses a Risc-V CPU. It currently only supports the mystorm BlackIce II ice40 board. 
+
+It allows the FPGA to be programmed using the Arduino IDE, the Arduino API and standard Arduino libraries, but it makes use of the FPGA to provide accelerated hardware peripherals.
+
+It is a version of [f32c/arduino](https://github.com/f32c/arduino) that works with the [SpinalHDL](https://github.com/SpinalHDL/SpinalHDL)  [Vexriscv](https://github.com/SpinalHDL/VexRiscv) [Murax SoC](https://github.com/SpinalHDL/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Murax.scala).
 
 ## BlackIce II implementation
 
@@ -186,3 +190,10 @@ The String toFloat method is not supported.
 USB classes are not supported.
 
 Lots of other features have not been tested.
+
+### Bugs
+
+The bootloader currently echoes the SREC data to the uart. 
+
+The Arduino console is not synchronised correctly with rebooting the CPU, so if the console is open when an Arduino program is uploaaded, the program is started and you see some console output, which is then cut short, and the CPU is rebooted and you see the full output.
+
