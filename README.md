@@ -147,7 +147,7 @@ On BlackIce pins 31 and 32.
 
 Corresponds to Arduino shiftIn method.
 
-ShiftIn is implemebted by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/ShifiIn.scala.
+ShiftIn is implemebted by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/ShiftIn.scala.
 
 #### shiftOut
 
@@ -163,7 +163,7 @@ Timer interrupts are implemented usinfg the MsTimer2 library and the spinal.lib 
 
 The atachInterrupt and detachInterrupt are supported, on up to 32 pins. Currentlyt only the two buttons are configured.
 
-Pin interrupts are implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PinIntyerrupt.scala.
+Pin interrupts are implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PinInterrupt.scala.
 
 #### Quadrature
 
