@@ -6,7 +6,7 @@ __BEGIN_DECLS
 
 void attachInterrupt(uint32_t pin, void (*callback)(void), uint32_t mode) {
   (*(volatile uint32_t*)IO_PIN_INTERRUPT_MASKS) = 0xFFFFFFFF;
-  (*(volatile uint32_t*)(IO_PIN_INTERRUPT + (pin << 2))) = callback;
+  (*(volatile uint32_t*)(IO_PIN_INTERRUPT + (pin << 2))) = (uint32_t) callback;
 
   if (mode == RISING || mode == CHANGE) {
     (*(volatile uint32_t*)IO_PIN_INTERRUPT_RISING) |=  (1 << pin);
