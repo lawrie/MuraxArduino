@@ -6,6 +6,8 @@ It allows the FPGA to be programmed using the Arduino IDE, the Arduino API and s
 
 It is a version of [f32c/arduino](https://github.com/f32c/arduino) that works with the [SpinalHDL](https://github.com/SpinalHDL/SpinalHDL)  [Vexriscv](https://github.com/SpinalHDL/VexRiscv) [Murax SoC](https://github.com/SpinalHDL/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Murax.scala).
 
+The scala source is https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MuraxArduino.scala.
+
 ## BlackIce II implementation
 
 There is Arduino Board Manager support.
@@ -18,9 +20,9 @@ Select pull down menu Tools->Board->Board Manager and install Murax Arduino.
 
 Then select, Board: Blackice Murax FPGA board, CPU Speed: 50 Mhz, RAM Size: 512KB SRAM external, port /dev/tyyUSB0
 
-The Murax configuration needed is at https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce, 
+The SpinalHDL scripts including thye Makefile, pcf file and top level Verilog files are at https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce, 
 but there is a copy of the BlackIce II binary at fpga/Blackice/bin/toplevel.bin and the pcf file is
-at fpga/BlackIce/toplevel.pcf, so you can try MuraxArduino out without installing SpinalHDL.
+at https://github.com/lawrie/MuraxArduino/blob/masterfpga/BlackIce/toplevel.pcf, so you can try MuraxArduino out without installing SpinalHDL.
 
 ### CPU
 
@@ -29,6 +31,8 @@ The CPU is the Vexriscv Risc-V 32-bit SpinalHDL implementation running at 50Mhz.
 ### Memory
 
 If you select the 8Kb BRAM internal option, you get an 8kb device with a bootloader of just over 2kb, leaving just under 6kb for the Arduino sketch. The BRAM is mapped onto address 0x80000000. The BRAM could be increased to 12kb. Currently the top 4kb is is used for the stack and function pointers for interrupts. 
+
+The SRAM implementation is https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MuraxSram.scala.
 
 If you select the 512KB SRAM external option (the default) , you get the Blackice II external SRAM. The bootloader still runs in BRAM and the stack is still in BRAM, but the code and static data is in external SRAM which is mapped to address 0x90000000.
 
@@ -48,6 +52,8 @@ pins 10-31: GPIO  : These correspond to the 4 switches (which double as SD card 
 
 This corresponds to Arduino pinMode, digitalRead and digitalWrite methods. The INPUT_PULLUP mode is not implemented and is treated as INPUT.
 
+GPIO is implemented by the spinal.lib TristateBuffer.
+
 #### UART
 
 Maps to the Blackice USB 2 connector on pins 85 and 88. Accesssed by Arduino Serial class. 
@@ -56,9 +62,13 @@ Output is sometimes misseed - more work on this is needed.
 
 There is no flow control.
 
+Uart is implemented bu the spinal.lib UartCtrl.
+
 #### MachineTimer
 
 A 32-bit microsecond machine timer is used for the implementation of the millis, micros, delay and delayMicroseconds methods.
+
+MachineTimer is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MacgineTimer.scala.
 
 #### Mux
 
@@ -74,6 +84,8 @@ Mux 2 : 7-segment display 1 if set, else GPIO pins 10-13 and 18-21
 Mux 3 : Quadrature on pins Pmod 5 if set.
 ```
 
+The Mux is implemebted by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Mux.scala.
+
 #### I2C 
 
 On pins 95 (SDA) and 93 (SCL). 
@@ -81,6 +93,8 @@ On pins 95 (SDA) and 93 (SCL).
 Accessed by the Arduino Wire class.
 
 Both master and slave are supported, but only master tested.
+
+I2c uses the spinal.lib I2cCtrl.
 
 #### SPI
 
@@ -90,11 +104,15 @@ Only parrtially tested.
 
 On Pmod 10.
 
+SPI uses the spinal.lib SPICtrl.
+
 #### PulseIn
 
 Used to drive ping sensor. On BlackIce pin 34.
 
 Corresponds to Arduino pulseIn and pulseInLong methods.
+
+PiulseIn is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PulseIn.scala.
 
 #### PWM
 
@@ -104,11 +122,15 @@ Corresponds to Arduino analogWrite method. The pin number is the PWM channel.
 
 And number (up to 64) PWM pins can be configured, but currently only 3 are used.
 
+PWM is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PWM.scala.
+
 #### Tone
 
 Available on Blackice pin 26.
 
 Corresponds to Arduino tone() and notTone() methods. Pin number is ignored.
+
+Tome is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Tone.scala.
 
 #### 7-segment LED display
 
@@ -117,11 +139,15 @@ channel 1 is multiplexed with GPIO and maps to Pmods 3 and 5.
 
 Supported by the SevenSegment library.
 
+7-segment is implewmented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/SevenSegment.scala.
+
 #### shiftIn
 
 On BlackIce pins 31 and 32.
 
 Corresponds to Arduino shiftIn method.
+
+ShiftIn is implemebted by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/ShifiIn.scala.
 
 #### shiftOut
 
@@ -129,11 +155,15 @@ On BlackIce pins 21 and 22.
 
 Corresponds to Arduino shiftOut method.
 
+ShiftOut is implemebted by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/ShiftOut.scala.
+
 #### Interrupts
 
 Timer interrupts are implemented usinfg the MsTimer2 library and the spinal.lib Timer pperipheral.
 
 The atachInterrupt and detachInterrupt are supported, on up to 32 pins. Currentlyt only the two buttons are configured.
+
+Pin interrupts are implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PinIntyerrupt.scala.
 
 #### Quadrature
 
@@ -141,11 +171,15 @@ Supports encoders and encoder motorss.
 
 Just one currently configured on Pmod 5, multiplexed with GPIO and the channel 1 7-segment display.
 
+Quadrature is implemebted by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Quadrature.scala.
+
 #### Servo
 
 Up to 32 servos can be configured. 
 
 There is currently just one on Blackice pin 25.
+
+Servo is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Servo.scala.
 
 #### Jtag
 
@@ -158,6 +192,8 @@ The 6 10-bit analog channels connected to gthe STM32 are supported via a QSPI pe
 The pins are on the Blackice Arduino header. 
 
 An [Arduino version of the Blackice iceboot firmware](https://github.com/lawrie/MuraxArduino/tree/master/firmware/QSPIanalog) is required, which sends the analog values to the ice40, continuously.
+
+QSPI analog is implemented by https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/QspiAnalog.scala.
 
 ### Libraries
 
