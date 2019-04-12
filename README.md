@@ -179,11 +179,9 @@ The LiquidCrystal library has been tested.
 
 ### Not implemented
 
-AnalogReference is a no op.
+The analogReadResolution, analogWriteResolution and analogReference methods are no ops.
 
-The analogReadResolution and analogWriteResolution methods are no ops.
-
-The Stroing toFloat method is not supported.
+The String toFloat method is not supported.
 
 USB classes are not supported.
 
