@@ -157,7 +157,7 @@ The 6 10-bit analog channels connected to gthe STM32 are supported via a QSPI pe
 
 The pins are on the Blackice Arduino header. 
 
-An Arduino version of the Blackice iceboot firmware is required, which sends the analog values to the ice40, continuously.
+An [Arduino version of the Blackice iceboot firmware](https://github.com/lawrie/MuraxArduino/tree/master/firmware/QSPIanalog) is required, which sends the analog values to the ice40, continuously.
 
 ### Libraries
 
