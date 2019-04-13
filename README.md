@@ -54,13 +54,15 @@ There is currently a single 32-bit GPIO peripheral with Arduino digital pins map
 
 ```
 Pins 0-3  : Output : Blackice LEDs
-Pins 4-7  : Output : Pin 4 is used as the trigger (Blackice pin 33) for a ping sensor. Pin 5 is multiplexed with the shiftIn clk 
-                     pin (see below) and pins 6 and 7 are multiplexed with the shiftOut clk and data pins.
+Pins 4-7  : Output : Pin 4 is used as the trigger (Blackice pin 33) for a ping sensor. 
+                     Pin 5 is multiplexed with the shiftIn clk pin (see below) 
+                     and pins 6 and 7 are multiplexed with the shiftOut clk and data pins.
 pins 8- 9 : Input  : 8 and 9 are buttons 1 and 2.
 pins 10-31: GPIO   : These correspond to the 4 switches (which double as SD card SPI pins) on pins 10 -13 , 
-                     Blackice Pmod 2 pins 87 and 89 on Arduino pins 14 and 15, and the whole of  Pmods 3, 4, 5 and 6 on
-                     Arduino Pins 16 - 31. Arduino pins 16 - 19  and 24 - 27 are multiplexed with the second 7-segment 
-                     display (see below). Pins 16 and 17 can also be multiplexed with a Quadrature peripheral (see below).
+                     Blackice Pmod 2 pins 87 and 89 on Arduino pins 14 and 15, and the whole of 
+                     Pmods 3, 4, 5 and 6 on Arduino Pins 16 - 31. Arduino pins 16 - 19 and 
+                     24 - 27 are multiplexed with the second 7-segment display (see below). 
+                     Pins 16 and 17 can also be multiplexed with a Quadrature peripheral (see below).
 ```
 
 The GPIO pins are accessed using the Arduino pinMode, digitalRead and digitalWrite methods. The INPUT_PULLUP mode is not implemented and is treated as INPUT.
