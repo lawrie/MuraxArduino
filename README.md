@@ -2,7 +2,7 @@
 
 [MuraxArduino](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MuraxArduino.scala) is an implementation of an Arduino board for open source FPGAs. It uses a [RISC-V](https://en.wikipedia.org/wiki/RISC-V) CPU. It currently only supports the [mystorm BlackIce II ice40 board](https://github.com/mystorm-org/BlackIce-II/wiki/Getting-Started). 
 
-It allows the FPGA to be programmed using the Arduino IDE, the [Arduino API](https://www.arduino.cc/reference/en/) and standard Arduino libraries, but it makes use of the FPGA to provide accelerated hardware peripherals.
+It allows the FPGA to be programmed using the [Arduino IDE](https://www.arduino.cc/en/Main/Software), the [Arduino API](https://www.arduino.cc/reference/en/) and standard [Arduino libraries](https://www.arduino.cc/en/Reference/Libraries), but it makes use of the FPGA to provide accelerated hardware peripherals.
 
 It is a version of [f32c/arduino](https://github.com/f32c/arduino) that works with the [SpinalHDL](https://github.com/SpinalHDL/SpinalHDL)  [Vexriscv](https://github.com/SpinalHDL/VexRiscv) [Murax SoC](https://github.com/SpinalHDL/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Murax.scala).
 
