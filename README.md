@@ -42,7 +42,7 @@ The CPU speed is set by the pll in [toplevel_pll.v](https://github.com/lawrie/Ve
 
 ### Memory
 
-If you select the 8Kb BRAM internal option, you get an 8kb device with a bootloader of just over 2kb, leaving just under 6kb for the Arduino sketch. The BRAM is mapped onto address 0x80000000. The BRAM could be increased to 12kb, but urrently the top 4kb is just used for the stack and function pointers for interrupts. 
+If you select the 8Kb BRAM internal option, you get an 8kb device with a bootloader of just over 2kb, leaving just under 6kb for the Arduino sketch. The BRAM is mapped onto address 0x80000000. The BRAM could be increased to 12kb, but currently the top 4kb is just used for the stack and function pointers for interrupts. 
 
 The SRAM implementation is [MuraxSram.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MuraxSram.scala).
 
@@ -223,19 +223,21 @@ The QspiAnalog peripheral is implemented by [QspiAnalog](https://github.com/lawr
 
 ### Libraries
 
-SPI and Wire Arduino libraries are implemented, which use the spinal.lib SPI and I2C peripherals.
+Custom versions odf the Arduino [SPI](https://github.com/lawrie/MuraxArduino/tree/master/libraries/SPI) and [Wire](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Wire) libraries are implemented, which use the spinal.lib SPI and I2C peripheral implementations.
 
-The SD library is supported using the Blackice SD card, whicg shares pins with the switches.
+The [SD](https://github.com/lawrie/MuraxArduino/tree/master/libraries/SD) library is supported using the Blackice SD card, which shares pins with the switches. It currently uses software SPI.
 
-There is an implementation of the Servo library, which uses a Servo peripheral, currently just on one pin.
+There is a custom implementation of the [Servo](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Servo) library, which uses the Servo peripheral.
 
-There is an implementation of the MsTimer2 third-party timer library, which can be used for millisecond resolution timer interrupts.
+There is a custom implementation of the [MsTimer2](https://github.com/lawrie/MuraxArduino/tree/master/libraries/MsTimer2) third-party timer library, which can be used for millisecond resolution timer interrupts.
 
-There is a simple SevenSegment library to display a hex character on a Digilent PMOD SSD.
+There is a simple [SevenSegment](https://github.com/lawrie/MuraxArduino/tree/master/libraries/SevenSegment) library to display a hex character on a Digilent Pmod SSD.
 
-There is a simple Quadrature library.
+There is a simple [Quadrature](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Quadrature) library.
 
-There is a version of the Firmata library, but it is not yet tested.
+There is a version of the [Firmata](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Firmata) library, but it is not yet tested.
+
+There is a custom version of the [EEPROM](https://github.com/lawrie/MuraxArduino/tree/master/libraries/EEPROM) library, which needs an i2c EEPROM module attached to the hardware SPI pins on Blackice Pmod 2.
 
 ### Third-party libraries
 
