@@ -132,19 +132,19 @@ The PWM is peripheral is implemented by [PWM.scala](https://github.com/lawrie/Ve
 
 #### Tone
 
-There is a single Tone peripheral available on Blackice pin 26.
+There is a single Tone peripheral available on Blackice Pmod 12, pin 26.
 
-Corresponds to the Arduino tone() and notTone() methods. The pin number on these methods is ignored.
+It corresponds to the Arduino tone() and notTone() methods. The pin number on these methods is ignored.
 
 The Tone is peripheral is implemented by [Tone.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Tone.scala).
 
 #### 7-segment LED display
 
-There are two 7-segment periphewral designed to be used with Digilent Pmods PMODSSD.
+There are two 7-segment peripheral designed to be used with Digilent Pmods, [Pmod SSD](https://store.digilentinc.com/pmod-ssd-seven-segment-display/).
 
 The first (channel 0) is accessed by the SevenSegment class and is on Blackice Pmods 7 and 9.
 
-The second (channel 1) is multiplexed with GPIO and maps to Pmods 3 and 5.
+The second (channel 1) is multiplexed with GPIO and is on Blackice Pmods 3 and 5.
 
 These are supported by the SevenSegment library. Channel 1 is accessed by the SevenSegment1 class.
 
