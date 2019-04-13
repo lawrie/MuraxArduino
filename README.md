@@ -4,6 +4,10 @@
 
 It allows the FPGA to be programmed using the [Arduino IDE](https://www.arduino.cc/en/Main/Software), the [Arduino API](https://www.arduino.cc/reference/en/) and standard [Arduino libraries](https://www.arduino.cc/en/Reference/Libraries), but it makes use of the FPGA to provide accelerated hardware peripherals.
 
+It allows you top configure as many peripherals such UART, SPI, I2C, PWM, timers, pin interrupts etc. as you need for your application, and is not limited by a small number of such hardware peripherals that hard-wired microcontrollers typically support. You do not need to resort to slow CPU-intensive bit-banged versions of such peripherals.
+
+It can drive peripherals such as LED panels, LED strips, VGA, HDMI, ADC, etc., much faster than microcontrollers can, and all without CPU involvement. (Not all of these are implemented yet).
+
 It is a version of [f32c/arduino](https://github.com/f32c/arduino) that works with the [SpinalHDL](https://github.com/SpinalHDL/SpinalHDL)  [Vexriscv](https://github.com/SpinalHDL/VexRiscv) [Murax SoC](https://github.com/SpinalHDL/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Murax.scala).
 
 ## BlackIce II implementation
