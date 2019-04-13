@@ -44,7 +44,7 @@ The CPU speed is set by the pll in [toplevel_pll.v](https://github.com/lawrie/Ve
 
 ### Memory
 
-If you select the 8Kb BRAM internal option, you get an 8kb device with a bootloader of just over 2kb, leaving just under 6kb for the Arduino sketch. The BRAM is mapped onto address 0x80000000. The BRAM could be increased to 12kb, but currently the top 4kb is just used for the stack and function pointers for interrupts. 
+If you select the 8Kb BRAM internal option, you get an 8kb device with a [bootloader](https://github.com/lawrie/VexRiscvSocSoftware/blob/master/projects/murax/boothex/src/main.c)  of just over 2kb, leaving just under 6kb for the Arduino sketch. The BRAM is mapped onto address 0x80000000. The BRAM could be increased to 12kb, but currently the top 4kb is just used for the stack and function pointers for interrupts. 
 
 The SRAM implementation is [MuraxSram.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MuraxSram.scala).
 
