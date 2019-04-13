@@ -67,7 +67,7 @@ pins 10-31: GPIO   : These correspond to the 4 switches (which double as SD card
 
 The GPIO pins are accessed using the Arduino pinMode, digitalRead and digitalWrite methods. The INPUT_PULLUP mode is not implemented and is treated as INPUT.
 
-The GPIO peripheral is implemented by the spinal.lib TristateBuffer. The SB_IO for the inout pins (10 - 31) is in [toplevel.v](https://github.com/lawrie/MuraxArduino/blob/master/fpga/Blackice/toplevel.v).
+The GPIO peripheral is implemented by the spinal.lib TristateBuffer. The SB_IO for the inout pins (10 - 31) is in [toplevel.v](https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce/toplevel.v).
 
 #### UART
 
@@ -83,7 +83,7 @@ MachineTimer is implemented by [MachineTimer.scala](https://github.com/lawrie/Ve
 
 #### Mux
 
-There is a Mux peripheral which has 32 pins controlled by a 32-bit register. The mux pins are implemented in [toplevel.v](https://github.com/lawrie/MuraxArduino/blob/master/fpga/Blackice/toplevel.v).
+There is a Mux peripheral which has 32 pins controlled by a 32-bit register. The mux pins are implemented in [toplevel.v](https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce/toplevel.v).
 
 It allows FPGA pins to be multiplexed between different peripherals, such as  between GPIO and another peripheral.
 
