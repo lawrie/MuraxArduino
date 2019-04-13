@@ -187,7 +187,7 @@ The Arduino atachInterrupt and detachInterrupt functions are supported on up to 
 
 The PinInterrupt peripheral is implemented by [PinInterrupt.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PinInterrupt.scala).
 
-Interrupts currently go to an interrupt function in the bootloader, which determines the type of interrupt and calls the appropriate interrupt function.
+Interrupts currently go to an [interrupt function](https://github.com/lawrie/VexRiscvSocSoftware/blob/master/projects/murax/boothex/src/main.c#L152) in the bootloader, which determines the type of interrupt and calls the appropriate interrupt function.
 
 #### Quadrature
 
