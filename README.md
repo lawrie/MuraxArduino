@@ -21,8 +21,8 @@ Select pull down menu Tools->Board->Board Manager and install Murax Arduino.
 Then select, Board: Blackice Murax FPGA board, CPU Speed: 50 Mhz, RAM Size: 512KB SRAM external, port /dev/tyyUSB0
 
 The SpinalHDL scripts including the Makefile, pcf file and top level Verilog files are at https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce, 
-but there is a copy of the BlackIce II binary at fpga/Blackice/bin/toplevel.bin and the pcf file is
-at https://github.com/lawrie/MuraxArduino/blob/master/fpga/Blackice, so you can try MuraxArduino out without installing SpinalHDL, by doing
+but there is a copy of the BlackIce II binary at https://github.com/lawrie/MuraxArduino/blob/masterfpga/Blackice/bin/toplevel.bin and the pcf file is
+at https://github.com/lawrie/MuraxArduino/blob/master/fpga/Blackice/toplevel.pcf, so you can try MuraxArduino out without installing SpinalHDL, by doing
 
 ```
 git clone https://github.com/lawrie/MuraxArduino
