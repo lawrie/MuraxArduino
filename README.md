@@ -34,6 +34,8 @@ cat bin/toplevel.bin /dev/ttyACM0
 
 You need both USB connections to the Blackice II board, as /dev/ttyUSB0 is used for uploading programs from the Arduino IDE and for the Arduino console.
 
+As with other implementations of Arduino, the CPU is reset and the Arduino program restarts when a program is uploaded, an Arduino console is opened, or another connection is made to /dev/ttyUSB0, but the syncronisation with the Arduino console is not perfect -see "Bugs" below.
+
 ### CPU
 
 The CPU is the Vexriscv Risc-V 32-bit SpinalHDL implementation running at 50Mhz. See [MuraxArduino.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MuraxArduino.scala) for the configuration used for the CPU.
