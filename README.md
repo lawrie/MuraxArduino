@@ -1,6 +1,6 @@
 # MuraxArduino
 
-MuraxArduino is an implementation of an Arduino board for open source FPGAs. It uses a Risc-V CPU. It currently only supports the mystorm BlackIce II ice40 board. 
+MuraxArduino is an implementation of an Arduino board for open source FPGAs. It uses a Risc-V CPU. It currently only supports the [mystorm BlackIce II ice40 board](https://github.com/mystorm-org/BlackIce-II/wiki/Getting-Started). 
 
 It allows the FPGA to be programmed using the Arduino IDE, the Arduino API and standard Arduino libraries, but it makes use of the FPGA to provide accelerated hardware peripherals.
 
