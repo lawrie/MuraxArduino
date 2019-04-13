@@ -71,7 +71,7 @@ The GPIO peripheral is implemented by the spinal.lib TristateBuffer. The SB_IO f
 
 There is currently a single UART peripheral that maps to the Blackice USB 2 connector on pins 85 and 88. It is accesssed using the Arduino Serial class. There is no flow control.
 
-The UART peripheral is implemented by the spinal.lib UartCtrl.
+The UART peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/uart).
 
 #### MachineTimer
 
@@ -103,13 +103,13 @@ It is accessed using the Arduino Wire class.
 
 Both master and slave are supported, but only master tested.
 
-The I2c peripheral uses the spinal.lib I2cCtrl implementation.
+The I2c peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/i2c).
 
 #### SPI
 
 There is a single SPI master peripheral on Pmod 10. SPI slave is not currently supported.
 
-The SPI peripheral uses the spinal.lib SPICtrl implementation.
+The SPI peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/spi).
 
 #### PulseIn
 
@@ -201,6 +201,8 @@ The Servo peripheral is is implemented by [Servo.scala](https://github.com/lawri
 #### Jtag
 
 A Jtag debugger for the Risc-V processor is supported on Blackice Pmod 8. Most USB Jtag devices are supported. It has been tested wiith an Anlogic Lychee Tang device.
+
+Jtag uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/jtag).
 
 #### QSPI Analog
 
