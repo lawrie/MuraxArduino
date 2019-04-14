@@ -239,7 +239,7 @@ There is a simple [Quadrature](https://github.com/lawrie/MuraxArduino/tree/maste
 
 There is a version of the [Firmata](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Firmata) library, but it is not yet tested.
 
-There is a custom version of the [EEPROM](https://github.com/lawrie/MuraxArduino/tree/master/libraries/EEPROM) library, which needs an i2c EEPROM module attached to the hardware SPI pins on Blackice Pmod 2.
+There is a custom version of the [EEPROM](https://github.com/lawrie/MuraxArduino/tree/master/libraries/EEPROM) library, which needs an i2c EEPROM module attached to the hardware i2c pins on Blackice Pmod 2.
 
 ### Third-party libraries
 
