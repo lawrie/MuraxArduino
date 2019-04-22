@@ -27,14 +27,18 @@
 extern uint32_t
 pulseIn(uint32_t pin, bool state, uint32_t timeout)
 {
+  uint32_t index = pin * 4; // 4 words per channel
 
-  (*(volatile uint32_t *)IO_PULSE_TIMEOUT) = timeout;
-  (*(volatile uint32_t *)IO_PULSE_VALUE) = state;
+  ((volatile uint32_t *)IO_PULSE_TIMEOUT)[index] = timeout;
+  ((volatile uint32_t *)IO_PULSE_VALUE)[index] = state;
+
   uint32_t pulse; 
+
   for(int i=0;i<100000;i++) {
-    pulse = (*(volatile uint32_t *)IO_PULSE_LENGTH);
+    pulse = ((volatile uint32_t *)IO_PULSE_LENGTH)[index];
     if (pulse != 0) return pulse;
   }
+
   return 0;
 }
 
