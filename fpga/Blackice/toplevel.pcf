@@ -1,5 +1,5 @@
-# Clock
-set_io CLK 129
+# Clock and global reset
+set_io CLK    129
 set_io GRESET 128
 
 # Buttons
@@ -16,46 +16,38 @@ set_io LED4 71
 set_io UART_RX 88
 set_io UART_TX 85
 
-# PWM variants
-set_io PWM 94
-set_io SERVO 25
-set_io TONE 26
+# Input-only pins
+set_io INPUT[0]  34 
+set_io INPUT[1]  22 
 
-# shiftIn and shiftOut
-set_io SHIFT_IN_DATA 22
-set_io SHIFT_IN_CLK 21
-set_io SHIFT_OUT_DATA 32
-set_io SHIFT_OUT_CLK 31
+# Output-only pins
+set_io OUTPUT[0]  33 
+set_io OUTPUT[1]  94
+set_io OUTPUT[2]  26
+set_io OUTPUT[3]  25
+set_io OUTPUT[4]  32
+set_io OUTPUT[5]  31
+set_io OUTPUT[6]  21
+set_io OUTPUT[7]  1   
+set_io OUTPUT[8]  10
+set_io OUTPUT[9]  9
+set_io OUTPUT[10] 2
+set_io OUTPUT[11] 20
+set_io OUTPUT[12] 19
+set_io OUTPUT[13] 16
+set_io OUTPUT[14] 15
 
-# SPI
-set_io SPI_SCK 18
-set_io SPI_MOSI 17
-set_io SPI_MISO 12
-set_io SPI_SS 11
-
-# QSPI
-set_io QSS      81
-set_io QCK      82
-set_io QD[0]    83
-set_io QD[1]    84
-set_io QD[2]    79
-set_io QD[3]    80
-
-# Ping sensor with pulseIn
-set_io ECHO 34
-set_io TRIGGER 33
-
-# GPIO
-set_io GPIO[0] 37
-set_io GPIO[1] 38
-set_io GPIO[2] 39
-set_io GPIO[3] 41
-set_io GPIO[4] 87
-set_io GPIO[5] 90
-set_io GPIO[6] 143
-set_io GPIO[7] 114
-set_io GPIO[8] 112
-set_io GPIO[9] 107
+# GPIO pins
+set_io GPIO[0]  37
+set_io GPIO[1]  38
+set_io GPIO[2]  39
+set_io GPIO[3]  41
+set_io GPIO[4]  87
+set_io GPIO[5]  90
+set_io GPIO[6]  143
+set_io GPIO[7]  114
+set_io GPIO[8]  112
+set_io GPIO[9]  107
 set_io GPIO[10] 144
 set_io GPIO[11] 113
 set_io GPIO[12] 110
@@ -69,15 +61,11 @@ set_io GPIO[19] 101
 set_io GPIO[20] 98
 set_io GPIO[21] 96
 
-# 7-segment display
-set_io D 1
-set_io SEG[0] 10
-set_io SEG[1] 9
-set_io SEG[2] 2
-set_io SEG[3] 20
-set_io SEG[4] 19
-set_io SEG[5] 16
-set_io SEG[6] 15
+# SPI
+set_io SPI_SCK  18
+set_io SPI_MOSI 17
+set_io SPI_MISO 12
+set_io SPI_SS   11
 
 # i2c
 set_io SDA 95
@@ -89,17 +77,29 @@ set_io JTAG_TDI 7
 set_io JTAG_TDO 4
 set_io JTAG_TMS 3
 
+# Debug
+set_io DONE  52 
+set_io DEBUG 49
+
+# QSPI
+set_io QSS      81
+set_io QCK      82
+set_io QD[0]    83
+set_io QD[1]    84
+set_io QD[2]    79
+set_io QD[3]    80
+
 # SRAM
-set_io ADR[0] 137
-set_io ADR[1] 138
-set_io ADR[2] 139
-set_io ADR[3] 141
-set_io ADR[4] 142
-set_io ADR[5] 42
-set_io ADR[6] 43
-set_io ADR[7] 44
-set_io ADR[8] 73
-set_io ADR[9] 74
+set_io ADR[0]  137
+set_io ADR[1]  138
+set_io ADR[2]  139
+set_io ADR[3]  141
+set_io ADR[4]  142
+set_io ADR[5]  42
+set_io ADR[6]  43
+set_io ADR[7]  44
+set_io ADR[8]  73
+set_io ADR[9]  74
 set_io ADR[10] 75
 set_io ADR[11] 76
 set_io ADR[12] 115
@@ -109,16 +109,16 @@ set_io ADR[15] 118
 set_io ADR[16] 119
 set_io ADR[17] 78
 
-set_io DAT[0] 136
-set_io DAT[1] 135
-set_io DAT[2] 134
-set_io DAT[3] 130
-set_io DAT[4] 125
-set_io DAT[5] 124
-set_io DAT[6] 122
-set_io DAT[7] 121
-set_io DAT[8] 62
-set_io DAT[9] 61
+set_io DAT[0]  136
+set_io DAT[1]  135
+set_io DAT[2]  134
+set_io DAT[3]  130
+set_io DAT[4]  125
+set_io DAT[5]  124
+set_io DAT[6]  122
+set_io DAT[7]  121
+set_io DAT[8]  62
+set_io DAT[9]  61
 set_io DAT[10] 60
 set_io DAT[11] 56
 set_io DAT[12] 55
@@ -131,8 +131,4 @@ set_io RAMWE 120
 set_io RAMCS 23
 set_io RAMUB 28
 set_io RAMLB 24
-
-# Debug
-set_io DONE 52 
-set_io DEBUG 49
 
