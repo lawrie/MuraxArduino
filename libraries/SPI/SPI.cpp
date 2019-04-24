@@ -18,6 +18,15 @@ void SPIClass::begin(int8_t ss)
     _spi[4] = 500; // setup
     _spi[5] = 500; // hold
     _spi[6] = 500; //disable
+
+    // Set SPI pins
+    pinMode(40, OUTPUT);
+    pinMode(41, OUTPUT);
+    pinMode(42, INPUT);
+    pinMode(43, OUTPUT);
+    // Set Mux 5
+    (*(volatile uint32_t*)IO_MUX) |= 0x20;
+
 }
 
 void SPIClass::end() {
