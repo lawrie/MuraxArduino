@@ -33,6 +33,7 @@ enum PIN_TYPE {
   PIN_TYPE_INPUT,
   PIN_TYPE_OUTPUT,
   PIN_TYPE_GPIO,
+  PIN_TYPE_GPIOB,
   PIN_TYPE_SIZE // must be last, defines the size
 };
 

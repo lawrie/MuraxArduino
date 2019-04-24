@@ -41,6 +41,10 @@
 #define	IO_GPIO_CTL	IO_ADDR(0x008)	          /* word, WR */
 #define	IO_GPIO_INPUT	IO_ADDR(0x000)	          /* word, RW */
 
+#define	IO_GPIOB_DATA	IO_ADDR(0x8004)	          /* word, RW */
+#define	IO_GPIOB_CTL	IO_ADDR(0x8008)	          /* word, WR */
+#define	IO_GPIOB_INPUT	IO_ADDR(0x8000)	          /* word, RW */
+
 #define	IO_PWM_DUTY	IO_ADDR(0x30000)	  /* word , WR */
 
 #define	IO_PULSE_VALUE	IO_ADDR(0x80000)	  /* word , WR */
