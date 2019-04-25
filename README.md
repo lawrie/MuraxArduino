@@ -54,26 +54,55 @@ It is recommended that SRAM is used as the BRAM implementation is not very robus
 
 ### Peripherals
 
-#### GPIO
+#### GPIO A
 
-There is currently a single 32-bit GPIO peripheral with Arduino digital pins mapped as follows:
+There are currently twoe 32-bit GPIO peripherals, GPIO A and GPIO B..
+
+GPIO corresponds to Arduino digital pins 0 - 31, mapped to Blackice pins as follows:
 
 ```
-Pins 0-3  : Output : Blackice LEDs
-Pins 4-7  : Output : Pin 4 is used as the trigger (Blackice pin 33) for a ping sensor. 
-                     Pin 5 is multiplexed with the shiftIn clk pin (see below) 
-                     and pins 6 and 7 are multiplexed with the shiftOut clk and data pins.
-pins 8- 9 : Input  : 8 and 9 are buttons 1 and 2.
-pins 10-31: GPIO   : These correspond to the 4 switches (which double as SD card SPI pins) on pins 10 -13 , 
-                     Blackice Pmod 2 pins 87 and 89 on Arduino pins 14 and 15, and the whole of 
-                     Pmods 3, 4, 5 and 6 on Arduino Pins 16 - 31. Arduino pins 16 - 19 and 
-                     24 - 27 are multiplexed with the second 7-segment display (see below). 
-                     Pins 16 and 17 can also be multiplexed with a Quadrature peripheral (see below).
+Pin 0     :  LED 1 (Red)
+Pin 1     :  LED 2 (Yellow)
+Pin 2     :  LED 3 (Green)
+Pin 3     :  LED 4 (Blue)
+Pin 4     :  Blackice pin 33 on Pmod 11
+Pin 5     :  Blackice pin 21 on Pmod 11
+Pin 6     :  Blackice Pin 31 on Pmod 12
+Pin 7     :  Blackice Pin 32 on Pmod 12
+Pin 8     :  Button 1
+Pin 9     :  Button 2
+Pin 10    :  Switch 1
+Pin 11    :  Switch 2
+Pin 12    :  Switch 3
+Pin 13    :  Switch 4
+Pin 14    :  Blackice pin 87 on Pmod 2
+Pin 15:   :  Blackice pin 90 on Pmod 2
+Pins 16-19:  Pmod 5
+Pins 20-23:  Pmod 6
+Pins 24-27:  Pmod 3
+Pins 28-31:  Pmod 4
 ```
+
+#### GPIO B
+
+GPIO B corresponfds to Arduino digital pins 32 - 59 and is mapped to Blackice pins as follows:
+
+```
+Pins 0-3  :  Pmod 7
+Pins 4-7  :  Pmod 9
+Pins 8-11 :  Pmod 10
+Pin 12    :  Blackice pin 34 on Pmod 11
+Pin 13    :  Blackice pin 22 on Pmod 11
+Pin 14    :  Blackice pin 94 on Pmod 1
+Pin 15    :  Blackice pin 26 on Pmod 12
+Pin 16    :  Blackice Pin 25 on Pmod 12
+```
+
+Various pins can be muxed with peripherals - see Mux pins below.
 
 The GPIO pins are accessed using the Arduino pinMode, digitalRead and digitalWrite methods. The INPUT_PULLUP mode is not implemented and is treated as INPUT.
 
-The GPIO peripheral is implemented by the spinal.lib TristateBuffer. The SB_IO for the inout pins (10 - 31) is in [toplevel.v](https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce/toplevel.v).
+The GPIO peripheral is implemented by the spinal.lib TristateBuffer. The SB_IO instances are in [toplevel.v](https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce/toplevel.v).
 
 #### UART
 
@@ -96,10 +125,16 @@ It allows FPGA pins to be multiplexed between different peripherals, such as  be
 4 muxes are currently used as follows:
 
 ```
-Mux 0 : shiftIn clk if set, else GPIO pin 5.
-Mux 1 : shiftOut clk and data if set, else GPIO pins 6 and 7.
-Mux 2 : 7-segment display 1 if set, else GPIO pins 10-13 and 18-21
-Mux 3 : Quadrature on pins Pmod 5 if set, else see Mux 2.
+Mux 0 : shiftIn clk on Blackice pin 21
+Mux 1 : shiftOut clk and data on Blackice pins 31 and 32
+Mux 2 : 7-segment display 1 on Pmods 5 and 9
+Mux 3 : 4 servos on Pmod 12
+Mux 4 : 7-segment display 0 on Pmods 3 and 5
+Mux 5 : SPI on Pmod 10
+Mux 6 : PWM on Blackice pin 95
+Mux 7 : PWM on DEBUG pin
+Mux 8 : PWM on DBG1 pin 
+Mux 9 : Tone on Blackice Pin 26
 ```
 
 The Mux is implemented by [Mux.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Mux.scala).
