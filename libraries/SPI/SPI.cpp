@@ -13,19 +13,16 @@ SPIClass::SPIClass(uint8_t spi_bus)
 void SPIClass::begin(int8_t ss)
 {
     _ss = ss;
-    _spi = (volatile uint32_t *)(0xF0060000 + (_spi_num * 0x100));
+    _spi = (volatile uint32_t *)(IO_SPI + (_spi_num * 0x100));
     _spi[3] = _divider;
     _spi[4] = 500; // setup
     _spi[5] = 500; // hold
     _spi[6] = 500; //disable
 
     // Set SPI pins
-    pinMode(40, OUTPUT);
-    pinMode(41, OUTPUT);
-    pinMode(42, INPUT);
-    pinMode(43, OUTPUT);
+    for(int i=0;i<4;i++) pinMode(SPI_START_PIN+i, OUTPUT);
     // Set Mux 5
-    (*(volatile uint32_t*)IO_MUX) |= 0x20;
+    (*(volatile uint32_t*)IO_MUX) |= (1 << SPI_MUX);
 
 }
 

@@ -59,6 +59,8 @@
 #define	IO_SHIFT_OUT_BIT_ORDER IO_ADDR(0x50004)	  /* word , WR */
 #define	IO_SHIFT_OUT_PRE_SCALE IO_ADDR(0x50008)	  /* word , WR */
 
+#define	IO_SPI IO_ADDR(0x60000)  /* word , WR */
+
 #define	IO_SHIFT_IN_BIT_ORDER IO_ADDR(0xA0008)	  /* word , WR */
 #define	IO_SHIFT_IN_PRE_SCALE IO_ADDR(0xA0004)	  /* word , WR */
 #define	IO_SHIFT_IN_BYTE_VALUE IO_ADDR(0xA0000)	  /* word , RD */
