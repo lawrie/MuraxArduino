@@ -29,9 +29,11 @@ static const uint8_t A4  = 20;
 static const uint8_t A5  = 21;
 
 // Other pins
+static const uint8_t SPI_START_PIN = 40;
 static const uint8_t PWM_PIN = 46;
 static const uint8_t TONE_PIN = 47;
-static const uint8_t SPI_START_PIN = 40;
+static const uint8_t SERVO_PIN = 48;
+static const uint8_t SERVO_MUX_PINS = 7;
 
 // Muxes
 static const uint8_t SHIFT_IN_MUX = 0;
