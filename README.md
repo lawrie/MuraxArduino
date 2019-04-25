@@ -236,11 +236,12 @@ The Quadrature peripheral is implemented by [Quadrature.scala](https://github.co
 
 #### Servo
 
-There is currently just one instance of the Servo peripheral on Blackice Pmod 12, pin 25.
+The [Servo](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Servo.scala) peripheral supports up to 32 servos.
 
-Up to 32 servos can be configured. 
+There is currently one instance with 4 servos on Pmod 12.  A [Digilent CON3 R/C Servo connectors](https://store.digilentinc.com/pmod-con3-r-c-servo-connectors/) can be used.
 
-The Servo peripheral is is implemented by [Servo.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Servo.scala).
+
+The Servo peripheral is is implemented by .
 
 #### Jtag
 
