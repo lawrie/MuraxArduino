@@ -26,7 +26,7 @@
 uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
 	(*(volatile uint32_t*) IO_MUX) |= (1 << SHIFT_IN_MUX); // Switch clock pin to shiftIn peripheral
         pinMode(SHIFT_IN_CLK, OUTPUT);
-        pinMode(SHIFT_IN_DATA, OUTPUT); 
+        pinMode(SHIFT_IN_DATA, INPUT); 
 	(*(volatile uint32_t*) IO_SHIFT_IN_PRE_SCALE) = 50;
 	(*(volatile uint32_t*) IO_SHIFT_IN_BIT_ORDER) = bitOrder;
         delayMicroseconds(100);
