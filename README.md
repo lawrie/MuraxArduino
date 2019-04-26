@@ -4,7 +4,7 @@
 
 It allows the FPGA to be programmed using the [Arduino IDE](https://www.arduino.cc/en/Main/Software), the [Arduino API](https://www.arduino.cc/reference/en/) and standard [Arduino libraries](https://www.arduino.cc/en/Reference/Libraries), but it makes use of the FPGA to provide accelerated hardware peripherals.
 
-It allows you top configure as many peripherals such UART, SPI, I2C, PWM, timers, pin interrupts etc. as you need for your application, and is not limited by a small number of such hardware peripherals that hard-wired microcontrollers typically support. You do not need to resort to slow CPU-intensive bit-banged versions of such peripherals.
+It allows you to configure as many peripherals such UART, SPI, I2C, PWM, timers, pin interrupts etc. as you need for your application, and is not limited by a small number of such hardware peripherals that hard-wired microcontrollers typically support. You do not need to resort to slow CPU-intensive bit-banged versions of such peripherals.
 
 It can drive peripherals such as LED panels, LED strips, VGA, HDMI, ADC, etc., much faster than microcontrollers can, and all without CPU involvement. (Not all of these are implemented yet).
 
@@ -28,7 +28,7 @@ but there is a copy of the BlackIce II [binary](https://github.com/lawrie/MuraxA
 ```
 git clone https://github.com/lawrie/MuraxArduino
 cd MuraxArduino/fpga/BlackIce
-stty -F /dev/ttyACM0
+stty -F /dev/ttyACM0 raw
 cat bin/toplevel.bin /dev/ttyACM0
 ```
 
@@ -44,7 +44,7 @@ The CPU speed is set by the pll in [toplevel_pll.v](https://github.com/lawrie/Ve
 
 ### Memory
 
-If you select the 8Kb BRAM internal option, you get an 8kb device with a [bootloader](https://github.com/lawrie/VexRiscvSocSoftware/blob/master/projects/murax/boothex/src/main.c)  of just over 2kb, leaving just under 6kb for the Arduino sketch. The BRAM is mapped onto address 0x80000000. The BRAM could be increased to 12kb, but currently the top 4kb is just used for the stack and function pointers for interrupts. 
+If you select the 8Kb BRAM internal option, you get an 8kb device with a [bootloader](https://github.com/lawrie/VexRiscvSocSoftware/blob/master/projects/murax/boothex/src/main.c)  of just over 2kb, leaving just under 6kb for the Arduino sketch. The BRAM is mapped onto address 0x80000000. The BRAM could be increased to 12kb, but currently the top 4kb is just used for the stack and function pointers for interrupts. The BRAM version may not currently be fully working.
 
 The SRAM implementation is [MuraxSram.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MuraxSram.scala).
 
@@ -56,7 +56,7 @@ It is recommended that SRAM is used as the BRAM implementation is not very robus
 
 #### GPIO A
 
-There are currently twoe 32-bit GPIO peripherals, GPIO A and GPIO B..
+There are currently two 32-bit GPIO peripherals, GPIO A and GPIO B..
 
 GPIO corresponds to Arduino digital pins 0 - 31, mapped to Blackice pins as follows:
 
@@ -88,14 +88,29 @@ Pins 28-31:  Pmod 4
 GPIO B corresponfds to Arduino digital pins 32 - 59 and is mapped to Blackice pins as follows:
 
 ```
-Pins 0-3  :  Pmod 7
-Pins 4-7  :  Pmod 9
-Pins 8-11 :  Pmod 10
-Pin 12    :  Blackice pin 34 on Pmod 11
-Pin 13    :  Blackice pin 22 on Pmod 11
-Pin 14    :  Blackice pin 94 on Pmod 1
-Pin 15    :  Blackice pin 26 on Pmod 12
-Pin 16    :  Blackice Pin 25 on Pmod 12
+Pins 32-35:  Pmod 7
+Pins 36-39:  Pmod 9
+Pins 40-43:  Pmod 10
+Pin 44    :  Blackice pin 34 on Pmod 11
+Pin 45    :  Blackice pin 22 on Pmod 11
+Pin 46    :  Blackice pin 94 on Pmod 1
+Pin 47    :  Blackice pin 26 on Pmod 12
+Pin 48    :  Blackice Pin 25 on Pmod 12
+Pin 49    :  Not used
+
+The following pins are read-only:
+
+Pins 50-53:  QSPI data pins
+Pin 54    :  I2C SDA
+Pin 55    :  I2C SCL
+Pin 56    :  QSPI QSS
+Pin 57    :  QSPI QCK
+Pin 58    :  Main 50Mhz clock
+Pin 59    :  GRESET (UART RTS)
+Pin 60    :  UART RX#
+Pin 61    :  Jtag TCK
+Pin 62    :  Jtag TMS
+Pin 63    :  Jtag TDI
 ```
 
 Various pins can be muxed with peripherals - see Mux pins below.
@@ -276,6 +291,8 @@ There is a simple [Quadrature](https://github.com/lawrie/MuraxArduino/tree/maste
 There is a version of the [Firmata](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Firmata) library, but it is not yet tested.
 
 There is a custom version of the [EEPROM](https://github.com/lawrie/MuraxArduino/tree/master/libraries/EEPROM) library, which needs an i2c EEPROM module attached to the hardware i2c pins on Blackice Pmod 2.
+
+There is a Mux library for setting and unsetting the mux pins.
 
 ### Third-party libraries
 
