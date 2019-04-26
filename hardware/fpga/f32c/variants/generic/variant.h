@@ -34,6 +34,10 @@ static const uint8_t PWM_PIN = 46;
 static const uint8_t TONE_PIN = 47;
 static const uint8_t SERVO_PIN = 48;
 static const uint8_t SERVO_MUX_PINS = 7;
+static const uint8_t SHIFT_IN_CLK = 5;
+static const uint8_t SHIFT_OUT_CLK = 6;
+static const uint8_t SHIFT_OUT_DATA = 7;
+static const uint8_t SHIFT_IN_DATA = 45;
 
 // Muxes
 static const uint8_t SHIFT_IN_MUX = 0;
