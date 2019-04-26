@@ -38,6 +38,7 @@ static const uint8_t SHIFT_IN_CLK = 5;
 static const uint8_t SHIFT_OUT_CLK = 6;
 static const uint8_t SHIFT_OUT_DATA = 7;
 static const uint8_t SHIFT_IN_DATA = 45;
+static const uint8_t PULSE_IN_PIN = 44;
 
 // Muxes
 static const uint8_t SHIFT_IN_MUX = 0;
