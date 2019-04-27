@@ -5,9 +5,9 @@
 #include <stdint.h>
 
 /* LEDs */
-#define PIN_LED_13           0
-#define PIN_LED              0
-#define LED_BUILTIN          0
+#define PIN_LED_13           3
+#define PIN_LED              3
+#define LED_BUILTIN          3
 
 #include "Arduino.h"
 #ifdef __cplusplus
@@ -17,6 +17,18 @@
 #ifdef __cplusplus
 extern UARTClass Serial;
 #endif
+
+// These aren't yet used
+#define SERIAL_INTERFACES_COUNT 1
+#define WIRE_INTERFACES_COUNT 1
+#define SPI_INTERFACES_COUNT 1
+#define SEVEN_SEGMENT_INTERFACES_COUNT 2
+#define SERVO_INTERFACES_COUNT 4
+#define PULSE_IN_INTERFACES_COUNT 2
+#define SHIFT_IN_INTERFACES_COUNT 1
+#define SHIFT_OUT_INTERFACES_COUNT 1
+#define TONE_INTERFACES_COUNT 1
+#define QUADRATURE_INTERFACES_COUNT 1
 
 /*
  * Analog pins - currently dummies to make thing compile
@@ -39,6 +51,8 @@ static const uint8_t SHIFT_OUT_CLK = 6;
 static const uint8_t SHIFT_OUT_DATA = 7;
 static const uint8_t SHIFT_IN_DATA = 45;
 static const uint8_t PULSE_IN_PIN = 44;
+static const uint8_t QUAD_PIN_A = 16;
+static const uint8_t QUAD_PIN_B = 17;
 
 // Muxes
 static const uint8_t SHIFT_IN_MUX = 0;
