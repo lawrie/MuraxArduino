@@ -289,11 +289,17 @@ Here is a Grove analog potentiometer being read using the QSPI Analog sensor and
 
 ![QSPI Analog](https://forum.mystorm.uk/uploads/default/original/1X/92e6d4b50f39754bb0d42011950e8f174aaa3362.jpg)
 
+#### SD card
+
+The Blackice SD card can be accessed using the SD library. It is currently set up to use software SPI, with pins SCK = 10, SS = 11, MOSI = 13 and MISO = 8. The first 3 correspond to the switches on the Blackice II board, and the switches must be in the OFF (inward) position for the SD card to work. Pin 8 is button 1, so this must not be used when the SD card is in use.
+
+The Examples/SD/Cardinfo example can be used to test the SD card with a FAT32 card in the slot. The chip select pin should be changed to 11 and the button pin to 9.
+
 ### Libraries
 
 Custom versions odf the Arduino [SPI](https://github.com/lawrie/MuraxArduino/tree/master/libraries/SPI) and [Wire](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Wire) libraries are implemented, which use the spinal.lib SPI and I2C peripheral implementations.
 
-The [SD](https://github.com/lawrie/MuraxArduino/tree/master/libraries/SD) library is supported using the Blackice SD card, which shares pins with the switches. It currently uses software SPI.
+The [SD](https://github.com/lawrie/MuraxArduino/tree/master/libraries/SD) library is supported using the Blackice SD card, which shares pins with the switches and buttons. It currently uses software SPI.
 
 There is a custom implementation of the [Servo](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Servo) library, which uses the Servo peripheral.
 
