@@ -183,6 +183,10 @@ It is accessed using the Arduino pulseIn and pulseInLong methods.
 
 The PulseIn peripheral is implemented by [PulseIn.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PulseIn.scala).
 
+Here is the PulseIn peripheral used with a 3.3v HC-SR04 Ping sensor, reading the display to the nearest object and displaying in in hex centimeters on a 7-segment display:
+
+![Ping test](https://github.com/lawrie/lawrie.github.io/blob/master/images/ping.jpg)
+
 #### PWM
 
 There are currently 3 PWM pins available on BlackIce pin 94 and on thes DBG1 and DONE LED pins.
