@@ -113,9 +113,9 @@ Pin 62    :  Jtag TMS
 Pin 63    :  Jtag TDI
 ```
 
-Various pins can be muxed with peripherals - see Mux pins below.
+Various pins can be multiplexed with peripherals - see Mux below.
 
-The GPIO pins are accessed using the Arduino pinMode, digitalRead and digitalWrite methods. The INPUT_PULLUP mode is not implemented and is treated as INPUT.
+The GPIO pins are accessed using the Arduino pinMode, digitalRead and digitalWrite functions. The INPUT_PULLUP mode is not implemented and is treated as INPUT.
 
 The GPIO peripheral is implemented by the spinal.lib TristateBuffer. The SB_IO instances are in [toplevel.v](https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce/toplevel.v).
 
@@ -137,7 +137,7 @@ There is a Mux peripheral which has 32 pins controlled by a 32-bit register. The
 
 It allows FPGA pins to be multiplexed between different peripherals, such as  between GPIO and another peripheral.
 
-4 muxes are currently used as follows:
+10 muxes are currently used as follows:
 
 ```
 Mux 0 : shiftIn clk on Blackice pin 21
@@ -160,7 +160,7 @@ There is a single I2C peripheral on Blackice pins 95 (SDA) and 93 (SCL).
 
 It is accessed using the Arduino Wire class.
 
-Both master and slave are supported, but only master tested.
+Both master and slave are supported, but only master has been tested, and the current Wire library does not support it.
 
 The I2c peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/i2c).
 
@@ -176,10 +176,9 @@ Here is harware SPI driving an SSD1306 display:
 
 #### PulseIn
 
-There is a single PulseIn peripheral on BlackIce pin 34. It can be used in combination with the trigger pin (Arduino pin 4)
-to drive a ping sensor.
+There is a single PulseIn peripheral with two pulseIn pins on BlackIce pins 34 and 22. It can be used in combination with a trigger pin to drive an HC-SR04 ping sensor.
 
-It is accessed using the Arduino pulseIn and pulseInLong methods.
+It is accessed using the Arduino pulseIn and pulseInLong methods. The pin number is the channel (0 or 1).
 
 The PulseIn peripheral is implemented by [PulseIn.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PulseIn.scala).
 
@@ -207,13 +206,13 @@ The Tone is peripheral is implemented by [Tone.scala](https://github.com/lawrie/
 
 #### 7-segment LED display
 
-There are two 7-segment peripheral designed to be used with Digilent Pmods, [Pmod SSD](https://store.digilentinc.com/pmod-ssd-seven-segment-display/).
+There are two 7-segment peripherals designed to be used with Digilent Pmods, [Pmod SSD](https://store.digilentinc.com/pmod-ssd-seven-segment-display/).
 
 The first (channel 0) is accessed by the SevenSegment class and is on Blackice Pmods 7 and 9.
 
 The second (channel 1) is multiplexed with GPIO and is on Blackice Pmods 3 and 5.
 
-These are supported by the SevenSegment library. Channel 1 is accessed by the SevenSegment1 class.
+These are supported by the SevenSegment library. You need to declare "SevenSegmentClass SevenSegment(1);" to access the channel 1 instance. 
 
 The 7-segment peripheral is implemented by [SevenSegment.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/SevenSegment.scala).
 
