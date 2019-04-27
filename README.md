@@ -308,7 +308,7 @@ There is a version of the [Firmata](https://github.com/lawrie/MuraxArduino/tree/
 
 There is a custom version of the [EEPROM](https://github.com/lawrie/MuraxArduino/tree/master/libraries/EEPROM) library, which needs an i2c EEPROM module attached to the hardware i2c pins on Blackice Pmod 2.
 
-There is a Mux library for setting and unsetting the mux pins.
+There is a [Mux](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Mux) library for setting and unsetting the mux pins.
 
 ### Third-party libraries
 
