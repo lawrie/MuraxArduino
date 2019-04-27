@@ -311,9 +311,13 @@ There is a [Mux](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Mu
 
 ### Third-party libraries
 
-The Adafruit BME280 and SSD1306 libraries have been tested in i2c, SPI hardware and SPI software modes.
+The Adafruit BME280 and SSD1306 libraries have been tested. The latter in i2c, SPI hardware and SPI software modes.
 
 The LiquidCrystal library has been tested.
+
+Here it is driving a text LCD:
+
+![Text LCD](https://forum.mystorm.uk/uploads/default/optimized/1X/a4d718e5f3e881bc6e1d540c0552d09771016cfb_1_690x388.jpg)
 
 ### Not implemented
 
@@ -326,8 +330,6 @@ USB classes are not supported.
 Lots of other features have not been tested.
 
 ### Bugs
-
-The bootloader currently echoes the SREC data to the uart. 
 
 The Arduino console is not synchronised correctly with rebooting the CPU, so if the console is open when an Arduino program is uploaaded, the program is started and you see some console output, which is then cut short, and the CPU is rebooted and you see the full output.
 
