@@ -170,6 +170,10 @@ There is a single SPI master peripheral on Pmod 10. SPI slave is not currently s
 
 The SPI peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/spi).
 
+Here is harware SPI driving an SSD1306 display:
+
+![Hardware SPI](https://github.com/lawrie/lawrie.github.io/blob/master/images/spi.jpg)
+
 #### PulseIn
 
 There is a single PulseIn peripheral on BlackIce pin 34. It can be used in combination with the trigger pin (Arduino pin 4)
@@ -264,6 +268,10 @@ A Jtag debugger for the Risc-V processor is supported on Blackice Pmod 8. Most U
 
 Jtag uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/jtag).
 
+Here is a Anlogic Lychee Tang USB FTDI adapter being used to run a prtogram using ddb and openocd:
+
+![Jtag debugging](https://forum.mystorm.uk/uploads/default/optimized/1X/06c68dd75fc9211d2693a73475e9c9e1388c6672_1_690x388.jpg)
+
 #### QSPI Analog
 
 The 6 10-bit analog channels connected to the Blackice STM32 co-processor are supported via a QspiAnalog peripheral.
@@ -272,7 +280,11 @@ The analog pins are on the Blackice Arduino header.
 
 An [Arduino version of the Blackice iceboot firmware](https://github.com/lawrie/MuraxArduino/tree/master/firmware/QSPIanalog) is required, which sends the analog values to the ice40, continuously.
 
-The QspiAnalog peripheral is implemented by [QspiAnalog](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/QspiAnalog.scala).
+The QspiAnalog peripheral is implemented by [QspiAnalog.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/QspiAnalog.scala).
+
+Here is a Grove analog potentiometer being read using the QSPI Analog sensor and displaying values on a 7-segment display:
+
+![QSPI Analog](https://forum.mystorm.uk/uploads/default/original/1X/92e6d4b50f39754bb0d42011950e8f174aaa3362.jpg)
 
 ### Libraries
 
