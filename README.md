@@ -164,7 +164,7 @@ Both master and slave are supported, but only master has been tested, and the cu
 
 The I2c peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/i2c).
 
-Here is an I2C master being used to drive an ss1306 OLED display:
+Here is the I2C master being used to drive an ssd1306 OLED display using Arduino Examples/SSD1306/ssd1306_128x64_i2c:
 
 ![i2c test](https://github.com/lawrie/lawrie.github.io/blob/master/images/i2c.jpg)
 
@@ -174,7 +174,7 @@ There is a single SPI master peripheral on Pmod 10. SPI slave is not currently s
 
 The SPI peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/spi).
 
-Here is harware SPI driving an SSD1306 display:
+Here is harware SPI driving an SSD1306 display using Arduino Examples/SSD1306/ssd1306_128x64_spi with hardware SPI selected:
 
 ![Hardware SPI](https://github.com/lawrie/lawrie.github.io/blob/master/images/spi.jpg)
 
@@ -278,7 +278,7 @@ The [Servo](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexris
 
 There is currently one instance with 4 servos on Pmod 12.  A [Digilent CON3 R/C Servo connectors](https://store.digilentinc.com/pmod-con3-r-c-servo-connectors/) can be used.
 
-Here is a servo being driven using the Digilent Pmod:
+Here is a servo being driven using the Digilent Pmod and Arduino Examples/Servo/Sweep:
 
 ![Servo test](https://github.com/lawrie/lawrie.github.io/blob/master/images/servo.jpg)
 
@@ -310,7 +310,7 @@ Here is a Grove analog potentiometer being read using the QSPI Analog sensor and
 
 The Blackice SD card can be accessed using the SD library. It is currently set up to use software SPI, with pins SCK = 10, SS = 11, MOSI = 13 and MISO = 8. The first 3 correspond to the switches on the Blackice II board, and the switches must be in the OFF (inward) position for the SD card to work. Pin 8 is button 1, so this must not be used when the SD card is in use.
 
-The Examples/SD/Cardinfo example can be used to test the SD card with a FAT32 card in the slot. The chip select pin should be changed to 11 and the button pin to 9.
+The Arduino Examples/SD/Cardinfo example can be used to test the SD card with a FAT32 card in the slot. The chip select pin should be changed to 11 and the button pin to 9.
 
 ### Libraries
 
