@@ -2,70 +2,66 @@
 set_io CLK    129
 set_io GRESET 128
 
-# Buttons
-set_io BUT1 63
-set_io BUT2 64
-
-# Leds
-set_io LED1 70
-set_io LED2 68
-set_io LED3 67
-set_io LED4 71
-
 # Uart
 set_io UART_RX 88
 set_io UART_TX 85
 
-# Input-only pins
-set_io INPUT[0]  34 
-set_io INPUT[1]  22 
+# GPIO A pins
+set_io GPIOA[0]   70  # LED1
+set_io GPIOA[1]   68  # LED2
+set_io GPIOA[2]   67  # LED3
+set_io GPIOA[3]   71  # LED4
+set_io GPIOA[4]   33  # Trigger
+set_io GPIOA[5]   21  # Shift in Clk
+set_io GPIOA[6]   31  # Shift Out Clk
+set_io GPIOA[7]   32  # Shift Out Data
+set_io GPIOA[8]   63  # Button 1
+set_io GPIOA[9]   64  # Button 2
+set_io GPIOA[10]  37
+set_io GPIOA[11]  38
+set_io GPIOA[12]  39
+set_io GPIOA[13]  41
+set_io GPIOA[14]  87
+set_io GPIOA[15]  90
+set_io GPIOA[16]  143
+set_io GPIOA[17]  114
+set_io GPIOA[18]  112
+set_io GPIOA[19]  107
+set_io GPIOA[20]  144
+set_io GPIOA[21]  113
+set_io GPIOA[22]  110
+set_io GPIOA[23]  106
+set_io GPIOA[24]  105
+set_io GPIOA[25]  102
+set_io GPIOA[26]  99
+set_io GPIOA[27]  97
+set_io GPIOA[28]  104
+set_io GPIOA[29]  101
+set_io GPIOA[30]  98
+set_io GPIOA[31]  96
 
-# Output-only pins
-set_io OUTPUT[0]  33 
-set_io OUTPUT[1]  94
-set_io OUTPUT[2]  26
-set_io OUTPUT[3]  25
-set_io OUTPUT[4]  32
-set_io OUTPUT[5]  31
-set_io OUTPUT[6]  21
-set_io OUTPUT[7]  1   
-set_io OUTPUT[8]  10
-set_io OUTPUT[9]  9
-set_io OUTPUT[10] 2
-set_io OUTPUT[11] 20
-set_io OUTPUT[12] 19
-set_io OUTPUT[13] 16
-set_io OUTPUT[14] 15
+# GPIO B pins
+set_io GPIOB[0]   1   
+set_io GPIOB[1]   10
+set_io GPIOB[2]   9
+set_io GPIOB[3]   2
+set_io GPIOB[4]   20
+set_io GPIOB[5]   19
+set_io GPIOB[6]   16
+set_io GPIOB[7]   15
+set_io GPIOB[8]   18  # SCK
+set_io GPIOB[9]   17  # MOSI
+set_io GPIOB[10]  12  # MISO
+set_io GPIOB[11]  11  # SS
+set_io GPIOB[12]  34  # PulseIn
+set_io GPIOB[13]  22  # ShiftIn data
+set_io GPIOB[14]  94  # PWM
+set_io GPIOB[15]  26  # Tone
+set_io GPIOB[16]  25  # Servo
 
-# GPIO pins
-set_io GPIO[0]  37
-set_io GPIO[1]  38
-set_io GPIO[2]  39
-set_io GPIO[3]  41
-set_io GPIO[4]  87
-set_io GPIO[5]  90
-set_io GPIO[6]  143
-set_io GPIO[7]  114
-set_io GPIO[8]  112
-set_io GPIO[9]  107
-set_io GPIO[10] 144
-set_io GPIO[11] 113
-set_io GPIO[12] 110
-set_io GPIO[13] 106
-set_io GPIO[14] 105
-set_io GPIO[15] 102
-set_io GPIO[16] 99
-set_io GPIO[17] 97
-set_io GPIO[18] 104
-set_io GPIO[19] 101
-set_io GPIO[20] 98
-set_io GPIO[21] 96
-
-# SPI
-set_io SPI_SCK  18
-set_io SPI_MOSI 17
-set_io SPI_MISO 12
-set_io SPI_SS   11
+# Debug
+set_io DONE  52 
+set_io DEBUG 49
 
 # i2c
 set_io SDA 95
@@ -76,10 +72,6 @@ set_io JTAG_TCK 8
 set_io JTAG_TDI 7
 set_io JTAG_TDO 4
 set_io JTAG_TMS 3
-
-# Debug
-set_io DONE  52 
-set_io DEBUG 49
 
 # QSPI
 set_io QSS      81
