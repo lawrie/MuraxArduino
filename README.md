@@ -164,6 +164,10 @@ Both master and slave are supported, but only master has been tested, and the cu
 
 The I2c peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/i2c).
 
+Here is an I2C master being used to drive an ss1306 OLED display:
+
+![i2c test](https://github.com/lawrie/lawrie.github.io/blob/master/images/i2c.jpg)
+
 #### SPI
 
 There is a single SPI master peripheral on Pmod 10. SPI slave is not currently supported.
