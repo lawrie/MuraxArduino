@@ -256,6 +256,10 @@ The encoder position is read using the read method of the Quadrature library. Us
 
 The Quadrature peripheral is implemented by [Quadrature.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Quadrature.scala).
 
+Here is a rotary encoder using the Quadrature peripheral, and displaying an 8-bit position on a 7-segment display:
+
+![Quad test](https://github.com/lawrie/lawrie.github.io/blob/master/images/quad.jpg)
+
 #### Servo
 
 The [Servo](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Servo.scala) peripheral supports up to 32 servos.
