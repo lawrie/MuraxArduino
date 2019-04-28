@@ -220,6 +220,10 @@ These are supported by the SevenSegment library. You need to declare "SevenSegme
 
 The 7-segment peripheral is implemented by [SevenSegment.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/SevenSegment.scala).
 
+Here are two 7-segment displays being used:
+
+![7-segment test](https://github.com/lawrie/lawrie.github.io/blob/master/images/7segment.jpg)
+
 #### shiftIn
 
 There is a single ShiftIn peripheral on BlackIce Pmod 11, pins 31 and 32.
