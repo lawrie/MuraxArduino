@@ -274,8 +274,9 @@ The [Servo](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexris
 
 There is currently one instance with 4 servos on Pmod 12.  A [Digilent CON3 R/C Servo connectors](https://store.digilentinc.com/pmod-con3-r-c-servo-connectors/) can be used.
 
+Here is a servo being driven using the Digilent Pmod:
 
-The Servo peripheral is is implemented by .
+![Servo test](https://github.com/lawrie/lawrie.github.io/blob/master/images/servo.jpg)
 
 #### Jtag
 
