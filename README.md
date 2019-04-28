@@ -244,6 +244,10 @@ As the ShiftOut clk and data pins are muxed with GPIO pins 6 and 7, mux 1 is set
 
 The ShiftOut peripheral is implemented by [ShiftOut.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/ShiftOut.scala).
 
+Here is the ShiftOut peripheral driving a 74HC595 8-Bit Shift Register following the [Arduino tutorial](https://www.arduino.cc/en/Tutorial/ShiftOut):
+
+![Shiftout test](https://github.com/lawrie/lawrie.github.io/blob/master/images/shiftout.jpg)
+
 #### Interrupts
 
 Timer interrupts are implemented usinfg the MsTimer2 library and the spinal.lib Timer implementation.
