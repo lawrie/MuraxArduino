@@ -413,9 +413,13 @@ There is a simple [Quadrature](https://github.com/lawrie/MuraxArduino/tree/maste
 
 There is a version of the [Firmata](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Firmata) library, but it is not yet tested.
 
+There is a [Mux](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Mux) library for setting and unsetting the mux pins.
+
 There is a custom version of the [EEPROM](https://github.com/lawrie/MuraxArduino/tree/master/libraries/EEPROM) library, which needs an i2c EEPROM module attached to the hardware i2c pins on Blackice Pmod 2.
 
-There is a [Mux](https://github.com/lawrie/MuraxArduino/tree/master/libraries/Mux) library for setting and unsetting the mux pins.
+Here is an EEPROM module connected to the I2C master:
+
+![EEPROM test](https://github.com/lawrie/lawrie.github.io/blob/master/images/eeprom.jpg)
 
 ### Third-party libraries
 
