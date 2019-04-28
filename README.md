@@ -292,6 +292,87 @@ A Jtag debugger for the Risc-V processor is supported on Blackice Pmod 8. Most U
 
 Jtag uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/jtag).
 
+You need to clone and build the [Risc-V version of open ocd](https://github.com/SpinalHDL/openocd_riscv).
+
+To run openocd, do:
+
+```
+cd openocd_risc
+src/openocd -f tcl/interface/ftdi/li -c 'set MURAX_CPU0_YAML ../VexRiscv/cpu0.yaml' -f tcl/target/murax.cfg
+```
+
+It responds with:
+
+```
+Open On-Chip Debugger 0.10.0+dev-01202-gced8dcd (2019-02-22-18:40)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+adapter speed: 1000 kHz
+../VexRiscv/cpu0.yaml
+adapter speed: 800 kHz
+adapter_nsrst_delay: 260
+Info : auto-selecting first available session transport "jtag". To override use 'transport select <transport>'.
+jtag_ntrst_delay: 250
+Info : set servers polling period to 50ms
+Info : clock speed 800 kHz
+Info : JTAG tap: fpga_spinal.bridge tap/device found: 0xc8001fff (mfg: 0x7ff (<invalid>), part: 0x8001, ver: 0xc)
+Warn : JTAG tap: fpga_spinal.bridge       UNEXPECTED: 0xc8001fff (mfg: 0x7ff (<invalid>), part: 0x8001, ver: 0xc)
+Error: JTAG tap: fpga_spinal.bridge  expected 1 of 1: 0x10001fff (mfg: 0x7ff (<invalid>), part: 0x0001, ver: 0x1)
+Error: Trying to use configured scan chain anyway...
+Warn : Bypassing JTAG setup events due to errors
+Info : Listening on port 3333 for gdb connections
+requesting target halt and executing a soft reset
+Info : Listening on port 6666 for tcl connections
+Info : Listening on port 4444 for telnet connections
+```
+
+Then to run gdb, do:
+
+```
+/opt/riscv/bin/riscv64-unknown-elf-gdb ~/VexRiscv/smallest.ino.elf
+target remote localhost:3333
+monitor reset halt
+load
+continue
+```
+
+That responds with:
+
+```
+GNU gdb (GDB) 8.0.50.20170724-git
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "--host=x86_64-pc-linux-gnu --target=riscv64-unknown-elf".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from /home/lawrie/VexRiscv/smallest.ino.elf...(no debugging symbols found)...done.
+(gdb) target remote localhost:3333
+Remote debugging using localhost:3333
+0x00000002 in ?? ()
+(gdb) monitor reset halt
+JTAG tap: fpga_spinal.bridge tap/device found: 0xc8001fff (mfg: 0x7ff (<invalid>), part: 0x8001, ver: 0xc)
+JTAG tap: fpga_spinal.bridge       UNEXPECTED: 0xc8001fff (mfg: 0x7ff (<invalid>), part: 0x8001, ver: 0xc)
+JTAG tap: fpga_spinal.bridge  expected 1 of 1: 0x10001fff (mfg: 0x7ff (<invalid>), part: 0x0001, ver: 0x1)
+Trying to use configured scan chain anyway...
+(gdb) load
+Loading section .init, size 0x58 lma 0x90000000
+Loading section .text, size 0x20 lma 0x90000058
+Loading section .sdata, size 0x4 lma 0x90000078
+Start address 0x90000000, load size 124
+Transfer rate: 9 KB/sec, 41 bytes/write.
+(gdb) continue
+Continuing.
+```
+
 Here is a Anlogic Lychee Tang USB FTDI adapter being used to run a prtogram using ddb and openocd:
 
 ![Jtag debugging](https://forum.mystorm.uk/uploads/default/optimized/1X/06c68dd75fc9211d2693a73475e9c9e1388c6672_1_690x388.jpg)
