@@ -234,6 +234,10 @@ As the ShiftIn clk pin is muxed with GPIO pin 5, mux 0 is set by the shiftIn met
 
 The ShiftIn peripheral  is implemented by [ShiftIn.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/ShiftIn.scala).
 
+Here is the ShiftIn peripheral being using with a CD4021BE 8-stage static shift register following the [Arduino tutotrial](https://www.arduino.cc/en/Tutorial/ShiftIn):
+
+![ShiftIn test](https://github.com/lawrie/lawrie.github.io/blob/master/images/shiftin.jpg)
+
 #### shiftOut
 
 There is a single ShiftOut peripheral on BlackIce Pmod 12, pins 21 and 22.
