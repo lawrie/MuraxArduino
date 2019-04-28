@@ -96,10 +96,10 @@ Pin 45    :  Blackice pin 22 on Pmod 11
 Pin 46    :  Blackice pin 94 on Pmod 1
 Pin 47    :  Blackice pin 26 on Pmod 12
 Pin 48    :  Blackice Pin 25 on Pmod 12
-Pin 49    :  Not used
 
 The following pins are read-only:
 
+Pin 49    :  System clock (100Mhz)
 Pins 50-53:  QSPI data pins
 Pin 54    :  I2C SDA
 Pin 55    :  I2C SCL
