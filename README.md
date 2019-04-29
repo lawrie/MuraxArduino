@@ -142,7 +142,7 @@ There is a Mux peripheral which has 32 pins controlled by a 32-bit register. The
 
 It allows FPGA pins to be multiplexed between different peripherals, such as  between GPIO and another peripheral.
 
-10 muxes are currently used as follows:
+12 muxes are currently used as follows:
 
 ```
 Mux 0 : shiftIn clk on Blackice pin 21
@@ -155,6 +155,8 @@ Mux 6 : PWM on Blackice pin 95
 Mux 7 : PWM on DEBUG pin
 Mux 8 : PWM on DBG1 pin 
 Mux 9 : Tone on Blackice Pin 26
+Mux 10: PWM on Blackice pin 34 on Pmod 11
+Mux 11: PWM Blackice pin 22 on Pmod 11
 ```
 
 The Mux is implemented by [Mux.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Mux.scala).
