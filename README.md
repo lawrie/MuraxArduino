@@ -318,7 +318,7 @@ To run openocd, do:
 
 ```
 cd openocd_risc
-src/openocd -f tcl/interface/ftdi/liichee_tang,cfg -c 'set MURAX_CPU0_YAML ../VexRiscv/cpu0.yaml' -f tcl/target/murax.cfg
+src/openocd -f tcl/interface/ftdi/liichee_tang.cfg -c 'set MURAX_CPU0_YAML ../VexRiscv/cpu0.yaml' -f tcl/target/murax.cfg
 ```
 
 It responds with:
