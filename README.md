@@ -111,6 +111,11 @@ Pin 60    :  UART RX#
 Pin 61    :  Jtag TCK
 Pin 62    :  Jtag TMS
 Pin 63    :  Jtag TDI
+
+Except that the folowing can also be used for output:
+
+Pin 49    :  DEBUG LED pin (green)
+Pin 50    :  DONE  LED pin (red)
 ```
 
 Various pins can be multiplexed with peripherals - see Mux below.
