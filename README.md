@@ -299,11 +299,26 @@ Jtag uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL
 
 You need to clone and build the [Risc-V version of open ocd](https://github.com/SpinalHDL/openocd_riscv).
 
+And then add lichee_tang.cfg to openocd_risc/tcl/interface/ftdi, with the contents:
+
+```
+adapter_khz     1000
+
+#source [find interface/ftdi/olimex-arm-usb-tiny-h.cfg]
+
+interface ftdi
+ftdi_device_desc "Dual RS232"
+ftdi_vid_pid 0x0403 0x6010
+
+ftdi_layout_init 0x0008 0x001b
+ftdi_layout_signal nSRST -oe 0x0020 -data 0x0020
+```
+
 To run openocd, do:
 
 ```
 cd openocd_risc
-src/openocd -f tcl/interface/ftdi/li -c 'set MURAX_CPU0_YAML ../VexRiscv/cpu0.yaml' -f tcl/target/murax.cfg
+src/openocd -f tcl/interface/ftdi/liichee_tang,cfg -c 'set MURAX_CPU0_YAML ../VexRiscv/cpu0.yaml' -f tcl/target/murax.cfg
 ```
 
 It responds with:
