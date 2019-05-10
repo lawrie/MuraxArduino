@@ -61,6 +61,8 @@
 
 #define	IO_SPI IO_ADDR(0x60000)  /* word , WR */
 
+#define	IO_I2C IO_ADDR(0x70000)  /* word , WR */
+
 #define	IO_SHIFT_IN_BIT_ORDER IO_ADDR(0xA0008)	  /* word , WR */
 #define	IO_SHIFT_IN_PRE_SCALE IO_ADDR(0xA0004)	  /* word , WR */
 #define	IO_SHIFT_IN_BYTE_VALUE IO_ADDR(0xA0000)	  /* word , RD */
@@ -74,6 +76,8 @@
 #define IO_MUX IO_ADDR(0xD0000)                   /* word, RW */
 
 #define	IO_ANALOG IO_ADDR(0xF0000)	          /* 6 words, RD */
+
+#define IO_QUADRATURE IO_ADDR(0xF8000)
 
 #define IO_PIN_INTERRUPT_RISING IO_ADDR(0xE0000)  /* word, WR */
 #define IO_PIN_INTERRUPT_FALLING IO_ADDR(0xE0004) /* word, WR */

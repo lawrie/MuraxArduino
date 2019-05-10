@@ -1,7 +1,9 @@
 #ifndef _QUADRATURE_CLASS_
 #define _QUADRATURE_CLASS_
 
-#define IO_QUADRATURE (*(volatile uint32_t*)0xF00F8000)
+#define IO_QUADRATURE_VALUE (*(volatile uint32_t*) IO_QUADRATURE)
+
+#include <dev/io.h>
 
 class QuadratureClass {
   public:

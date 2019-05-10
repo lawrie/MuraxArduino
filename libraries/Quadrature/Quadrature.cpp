@@ -2,7 +2,7 @@
 
 int
 QuadratureClass::read(void) {
-  return IO_QUADRATURE;
+  return IO_QUADRATURE_VALUE;
 }
 
 QuadratureClass Quadrature;
