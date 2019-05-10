@@ -8,7 +8,7 @@
 #define DEFAULT_PULSE_WIDTH  1500     // default pulse width when servo is attached
 #define REFRESH_INTERVAL    20000     // minumim time to refresh servos in microseconds 
 
-#define IO_SERVO_PULSE_LENGTH ((volatile uint32_t*)0xF00C0000)
+#define IO_SERVO_PULSE_LENGTH ((volatile uint32_t*) IO_SERVO)
 
 class Servo {
 public:
