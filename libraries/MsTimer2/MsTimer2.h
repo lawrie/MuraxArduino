@@ -1,10 +1,12 @@
 #ifndef MsTimer2_h
 #define MsTimer2_h
 
-#define TIMER_PRESCALER ((Prescaler_Reg*)0xF0020000)
-#define TIMER_INTERRUPT ((InterruptCtrl_Reg*)0xF0020010)
-#define TIMER_A ((Timer_Reg*)0xF0020040)
-#define TIMER_B ((Timer_Reg*)0xF0020050)
+#include <dev/io.h>
+
+#define TIMER_PRESCALER ((Prescaler_Reg*) (IO_TIMER + 0x00))
+#define TIMER_INTERRUPT ((InterruptCtrl_Reg*) (IO_TIMER + 0x10))
+#define TIMER_A ((Timer_Reg*) (IO_TIMER + 0x40))
+#define TIMER_B ((Timer_Reg*) (IO_TIMER + 0x50))
 
 #define IO_TIMER_INTERRUPT (*(volatile uint32_t*)0x80002000)
 

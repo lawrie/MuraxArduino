@@ -91,6 +91,7 @@
 #define IO_PIN_INTERRUPT_PENDING IO_ADDR(0xE0010) /* word. RW */
 #define IO_PIN_INTERRUPT_MASKS IO_ADDR(0xE0014)    /* word, RW */
 
+#define IO_TIMER IO_ADDR(0x20000)
 #define IO_TIMER_INTERRUPT_MASKS IO_ADDR(0x20014)  /* word, RW */
 
 #define IO_TIMER_INTERRUPT 0x80002000             /* word, RW */
