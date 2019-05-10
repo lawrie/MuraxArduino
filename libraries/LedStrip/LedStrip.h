@@ -26,9 +26,9 @@
 
 #include <Arduino.h>
 
-#define LEDS_PIXEL (*(volatile uint32_t*)0xF00D8000)
-#define LEDS_ADDR (*(volatile uint32_t*)0xF00D8004)
-#define LEDS_NUM (*(volatile uint32_t*)0xF00D8008)
+#define LEDS_PIXEL (*(volatile uint32_t*) (IO_WS2811 + 0x00))
+#define LEDS_ADDR (*(volatile uint32_t*) (IO_WS2811 + 0x04))
+#define LEDS_NUM (*(volatile uint32_t*) (IO_WS2811 + 0x08))
 
 static const uint8_t GammaTable[256] = {
     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
