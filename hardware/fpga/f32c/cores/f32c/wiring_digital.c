@@ -11,10 +11,10 @@ __BEGIN_DECLS
 void
 pinMode(uint32_t pin, uint32_t mode)
 {
-	volatile uint32_t *port = (volatile uint32_t *) (pin < 32 ? IO_GPIO_CTL : IO_GPIOB_CTL);
+	volatile uint32_t *port = (volatile uint32_t *) (pin < 32 ? IO_GPIO_A_CTL : IO_GPIO_B_CTL);
 
 	if (pin >= variant_pin_map_size ||
-	    (digitalPinToPort(pin) != IO_GPIO_DATA && digitalPinToPort(pin) != IO_GPIOB_DATA))
+	    (digitalPinToPort(pin) != IO_GPIO_A_DATA && digitalPinToPort(pin) != IO_GPIO_B_DATA))
 		return;
 
 	switch (mode) {

@@ -33,18 +33,18 @@ static uint32_t tsc_hi, tsc_lo;
 
 const volatile uint32_t *pintype2ioaddr[PIN_TYPE_SIZE] = {
   [PIN_TYPE_NC]     = NULL,
-  [PIN_TYPE_INPUT]  = (volatile uint32_t *)IO_GPIO_DATA,
-  [PIN_TYPE_OUTPUT] = (volatile uint32_t *)IO_GPIO_DATA,
-  [PIN_TYPE_GPIO]   = (volatile uint32_t *)IO_GPIO_DATA,
-  [PIN_TYPE_GPIOB]  = (volatile uint32_t *)IO_GPIOB_DATA
+  [PIN_TYPE_INPUT]  = (volatile uint32_t *)IO_GPIO_A_DATA,
+  [PIN_TYPE_OUTPUT] = (volatile uint32_t *)IO_GPIO_A_DATA,
+  [PIN_TYPE_GPIO]   = (volatile uint32_t *)IO_GPIO_A_DATA,
+  [PIN_TYPE_GPIOB]  = (volatile uint32_t *)IO_GPIO_B_DATA
 };
 
 const volatile uint32_t *pintype2ioaddr_in[PIN_TYPE_SIZE] = {
   [PIN_TYPE_NC]     = NULL,
-  [PIN_TYPE_INPUT]  = (volatile uint32_t *)IO_GPIO_INPUT,
-  [PIN_TYPE_OUTPUT] = (volatile uint32_t *)IO_GPIO_INPUT,
-  [PIN_TYPE_GPIO]   = (volatile uint32_t *)IO_GPIO_INPUT,
-  [PIN_TYPE_GPIOB]  = (volatile uint32_t *)IO_GPIOB_INPUT
+  [PIN_TYPE_INPUT]  = (volatile uint32_t *)IO_GPIO_A_INPUT,
+  [PIN_TYPE_OUTPUT] = (volatile uint32_t *)IO_GPIO_A_INPUT,
+  [PIN_TYPE_GPIO]   = (volatile uint32_t *)IO_GPIO_A_INPUT,
+  [PIN_TYPE_GPIOB]  = (volatile uint32_t *)IO_GPIO_B_INPUT
 };
 
 const struct variant_pin_map_s variant_pin_map[] = VARIANT_DIGITAL_PIN_MAP;

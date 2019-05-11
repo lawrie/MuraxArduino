@@ -31,13 +31,13 @@ pulseIn(uint32_t pin, bool state, uint32_t timeout)
 
   pinMode(PULSE_IN_PINS[pin], INPUT);
 
-  ((volatile uint32_t *)IO_PULSE_TIMEOUT)[index] = timeout;
-  ((volatile uint32_t *)IO_PULSE_VALUE)[index] = state;
+  ((volatile uint32_t *)IO_PULSE_IN_TIMEOUT)[index] = timeout;
+  ((volatile uint32_t *)IO_PULSE_IN_VALUE)[index] = state;
 
   uint32_t pulse; 
 
   for(int i=0;i<100000;i++) {
-    pulse = ((volatile uint32_t *)IO_PULSE_LENGTH)[index];
+    pulse = ((volatile uint32_t *)IO_PULSE_IN_LENGTH)[index];
     if (pulse != 0) return pulse;
   }
 

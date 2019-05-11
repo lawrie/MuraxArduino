@@ -37,19 +37,19 @@
 
 #define	IO_ADDR(a)	(IO_BASE | (a))
 
-#define	IO_GPIO_DATA	IO_ADDR(0x004)	          /* word, RW */
-#define	IO_GPIO_CTL	IO_ADDR(0x008)	          /* word, WR */
-#define	IO_GPIO_INPUT	IO_ADDR(0x000)	          /* word, RW */
+#define	IO_GPIO_A_DATA	IO_ADDR(0x004)	          /* word, RW */
+#define	IO_GPIO_A_CTL	IO_ADDR(0x008)	          /* word, WR */
+#define	IO_GPIO_A_INPUT	IO_ADDR(0x000)	          /* word, RW */
 
-#define	IO_GPIOB_DATA	IO_ADDR(0x8004)	          /* word, RW */
-#define	IO_GPIOB_CTL	IO_ADDR(0x8008)	          /* word, WR */
-#define	IO_GPIOB_INPUT	IO_ADDR(0x8000)	          /* word, RW */
+#define	IO_GPIO_B_DATA	IO_ADDR(0x8004)	          /* word, RW */
+#define	IO_GPIO_B_CTL	IO_ADDR(0x8008)	          /* word, WR */
+#define	IO_GPIO_B_INPUT	IO_ADDR(0x8000)	          /* word, RW */
 
 #define	IO_PWM_DUTY	IO_ADDR(0x30000)	  /* word , WR */
 
-#define	IO_PULSE_VALUE	IO_ADDR(0x80000)	  /* word , WR */
-#define	IO_PULSE_TIMEOUT IO_ADDR(0x80004)	  /* word , WR */
-#define	IO_PULSE_LENGTH IO_ADDR(0x80008)	  /* word , RD */
+#define	IO_PULSE_IN_VALUE	IO_ADDR(0x80000)	  /* word , WR */
+#define	IO_PULSE_IN_TIMEOUT IO_ADDR(0x80004)	  /* word , WR */
+#define	IO_PULSE_IN_LENGTH IO_ADDR(0x80008)	  /* word , RD */
 
 #define	IO_UART 	IO_ADDR(0x10000)	  /* word , RW */
 #define	IO_TONE_PERIOD 	IO_ADDR(0x40000)	  /* word , WR */
@@ -95,7 +95,7 @@
 #define IO_TIMER_INTERRUPT_MASKS IO_ADDR(0x20014)  /* word, RW */
 
 #define IO_TIMER_INTERRUPT 0x80002000             /* word, RW */
-#define IO_PIN_INTERRUPT 0x80002004               /* word, RW */
+#define IO_PIN_INTERRUPT_ADDR 0x80002004               /* word, RW */
 
 /* SIO status bitmask - TODO: get rid of this */
 #define	SIO_TX_BUSY	0x4
