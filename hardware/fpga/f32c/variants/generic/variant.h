@@ -42,7 +42,7 @@ static const uint8_t A5  = 21;
 
 // Other pins
 static const uint8_t SPI_START_PIN = 40;
-static const uint8_t PWM_PIN = 46;
+static const int8_t  PWM_PINS[] = {14,-1,-1,12,13};
 static const uint8_t TONE_PIN = 47;
 static const uint8_t SERVO_PINS[] = {7,6,15,16};
 static const uint8_t SHIFT_IN_CLK = 5;

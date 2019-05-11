@@ -37,7 +37,7 @@ void analogOutputInit( void )
 
 void analogWrite(uint32_t ulPin, uint32_t ulValue)
 {
-    if (ulPin == 0) pinMode(PWM_PIN, OUTPUT);
+    if (PWM_PINS[ulPin] >= 0) pinMode(PWM_PINS[ulPin], OUTPUT);
     (*(volatile uint32_t *)IO_MUX) |= (1 << (ulPin + PWM_MUX)); 
     (*(volatile uint32_t *) (IO_PWM_DUTY + (ulPin << 2))) = ulValue;
 }
