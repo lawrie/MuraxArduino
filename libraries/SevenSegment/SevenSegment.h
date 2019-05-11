@@ -1,6 +1,9 @@
 #ifndef _SEVEN_SEGMENT_CLASS_
 #define _SEVEN_SEGMENT_CLASS_
 
+#include <Arduino.h>
+#include <Mux.h>
+
 #define IO_SEVEN_SEGMENT ((volatile uint32_t*) IO_SEVEN_SEGMENT_A)
 
 class SevenSegmentClass {

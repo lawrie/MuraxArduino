@@ -52,6 +52,8 @@ static const uint8_t SHIFT_IN_DATA = 45;
 static const int8_t PULSE_IN_PINS[] = {45,44};
 static const uint8_t QUAD_PIN_A = 16;
 static const uint8_t QUAD_PIN_B = 17;
+static const int8_t SEVEN_SEGMENT_A_SEG_PINS[] = {34,33,32,39,38,37,36};
+static const int8_t SEVEN_SEGMENT_B_SEG_PINS[] = {26,25,24,19,18,17,16};
 
 // Muxes
 static const uint8_t SHIFT_IN_MUX = 0;
