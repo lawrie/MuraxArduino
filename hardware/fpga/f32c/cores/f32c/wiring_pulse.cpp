@@ -29,7 +29,7 @@ pulseIn(uint32_t pin, bool state, uint32_t timeout)
 {
   uint32_t index = pin * 4; // 4 words per channel
 
-  pinMode(PULSE_IN_PIN, INPUT);
+  pinMode(PULSE_IN_PINS[pin], INPUT);
 
   ((volatile uint32_t *)IO_PULSE_TIMEOUT)[index] = timeout;
   ((volatile uint32_t *)IO_PULSE_VALUE)[index] = state;

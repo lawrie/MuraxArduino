@@ -49,7 +49,7 @@ static const uint8_t SHIFT_IN_CLK = 5;
 static const uint8_t SHIFT_OUT_CLK = 6;
 static const uint8_t SHIFT_OUT_DATA = 7;
 static const uint8_t SHIFT_IN_DATA = 45;
-static const uint8_t PULSE_IN_PIN = 44;
+static const int8_t PULSE_IN_PINS[] = {45,44};
 static const uint8_t QUAD_PIN_A = 16;
 static const uint8_t QUAD_PIN_B = 17;
 
