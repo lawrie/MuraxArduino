@@ -10,9 +10,7 @@ uint8_t Servo::attach(int pin) {
 
   (*(volatile uint32_t*)IO_MUX) |= (1 << SERVO_MUX);
 
-  if (pin == 3) pinMode(SERVO_PIN, OUTPUT); 
-  else if (pin == 2) pinMode(TONE_PIN, OUTPUT);
-  else pinMode(SERVO_MUX_PINS - pin, OUTPUT);
+  pinMode(SERVO_PINS[pin], OUTPUT);
 
   return pin;
 }
