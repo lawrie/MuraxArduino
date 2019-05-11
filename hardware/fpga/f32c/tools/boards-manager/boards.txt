@@ -137,3 +137,8 @@ fpga_blackice.menu.protocol.hex.upload.protocol=hex
 fpga_blackice.menu.protocol.hex.upload.flags=-P{serial.port} -ra
 fpga_blackice.menu.pinmap.generic=Generic
 fpga_blackice.menu.pinmap.generic.build.variant=generic
+fpga_blackice.menu.pinmap.blackice=Blackice II
+fpga_blackice.menu.pinmap.blackice.build.variant=blackice
+fpga_blackice.menu.pinmap.test=Blackice test
+fpga_blackice.menu.pinmap.test.build.variant=test
+
