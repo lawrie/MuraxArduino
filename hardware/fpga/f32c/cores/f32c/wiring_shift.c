@@ -25,8 +25,8 @@
 #include "Arduino.h"
 uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
 	(*(volatile uint32_t*) IO_MUX) |= (1 << SHIFT_IN_MUX); // Switch clock pin to shiftIn peripheral
-        pinMode(SHIFT_IN_CLK, OUTPUT);
-        pinMode(SHIFT_IN_DATA, INPUT); 
+        pinMode(SHIFT_IN_CLOCK_PIN, OUTPUT);
+        pinMode(SHIFT_IN_DATA_PIN, INPUT); 
 	(*(volatile uint32_t*) IO_SHIFT_IN_PRE_SCALE) = 50;
 	(*(volatile uint32_t*) IO_SHIFT_IN_BIT_ORDER) = bitOrder;
         delayMicroseconds(100);
@@ -36,8 +36,8 @@ uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val)
 {
 	(*(volatile uint32_t*) IO_MUX) |= (1 << SHIFT_OUT_MUX); // Switch clock and data pins to shiftOut peripheral
-        pinMode(SHIFT_OUT_CLK, OUTPUT);
-        pinMode(SHIFT_OUT_DATA, OUTPUT);
+        pinMode(SHIFT_OUT_CLOCK_PIN, OUTPUT);
+        pinMode(SHIFT_OUT_DATA_PIN, OUTPUT);
 	(*(volatile uint32_t*) IO_SHIFT_OUT_PRE_SCALE) = 1000;
 	(*(volatile uint32_t*) IO_SHIFT_OUT_BIT_ORDER) = bitOrder;
 	(*(volatile uint32_t*) IO_SHIFT_OUT_BYTE_VALUE) = val;

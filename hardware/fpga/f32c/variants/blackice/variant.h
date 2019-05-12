@@ -31,14 +31,14 @@ static const uint8_t A5  = 21;
 
 // Other pins
 
-static const uint8_t SHIFT_IN_DATA = 45;
-static const uint8_t SHIFT_IN_CLK = 5;
+static const uint8_t SHIFT_IN_DATA_PIN = 45;
+static const uint8_t SHIFT_IN_CLOCK_PIN = 5;
 static const uint8_t SEVEN_SEGMENT_A_DIGIT_PIN = 35;
 static const int8_t SEVEN_SEGMENT_A_SEG_PINS[] = {34,33,32,39,38,37,36};
 static const uint8_t SEVEN_SEGMENT_B_DIGIT_PIN = 27;
 static const int8_t SEVEN_SEGMENT_B_SEG_PINS[] = {26,25,24,19,18,17,16};
-static const uint8_t SHIFT_OUT_DATA = 7;
-static const uint8_t SHIFT_OUT_CLK = 6;
+static const uint8_t SHIFT_OUT_DATA_PIN = 7;
+static const uint8_t SHIFT_OUT_CLOCK_PIN = 6;
 static const int8_t PULSE_IN_PINS[] = {45,44};
 static const int8_t PIN_INTERRUPT_PINS[] = {8};
 static const uint8_t QUADRATURE_QUAD_B = 17;
