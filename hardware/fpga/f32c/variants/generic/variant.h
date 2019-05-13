@@ -61,7 +61,7 @@ static const uint8_t SHIFT_OUT_MUX = 1;
 static const uint8_t SEVEN_SEGMENT_MUX1 = 2;
 static const uint8_t SERVO_MUX = 3;
 static const uint8_t SEVEN_SEGMENT_MUX0 = 4;
-static const uint8_t SPI_MUX = 5;
+static const uint8_t SPI_MASTER_MUX = 5;
 static const uint8_t PWM_MUX = 6;
 static const uint8_t TONE_MUX = 9;
 

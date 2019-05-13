@@ -59,7 +59,7 @@
 #define	IO_SHIFT_OUT_BIT_ORDER IO_ADDR(0x50004)	  /* word , WR */
 #define	IO_SHIFT_OUT_PRE_SCALE IO_ADDR(0x50008)	  /* word , WR */
 
-#define	IO_SPI IO_ADDR(0x60000)  /* word , WR */
+#define	IO_SPI_MASTER IO_ADDR(0x60000)  /* word , WR */
 
 #define	IO_I2C IO_ADDR(0x70000)  /* word , WR */
 
