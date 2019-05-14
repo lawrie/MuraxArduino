@@ -54,13 +54,15 @@ static const uint8_t QUAD_PIN_A = 16;
 static const uint8_t QUAD_PIN_B = 17;
 static const int8_t SEVEN_SEGMENT_A_SEG_PINS[] = {34,33,32,39,38,37,36};
 static const int8_t SEVEN_SEGMENT_B_SEG_PINS[] = {26,25,24,19,18,17,16};
+static const uint8_t SEVEN_SEGMENT_A_DIGIT_PIN = 35;
+static const uint8_t SEVEN_SEGMENT_B_DIGIT_PIN = 27;
 
 // Muxes
 static const uint8_t SHIFT_IN_MUX = 0;
 static const uint8_t SHIFT_OUT_MUX = 1;
-static const uint8_t SEVEN_SEGMENT_MUX1 = 2;
+static const uint8_t SEVEN_SEGMENT_A_MUX = 4;
 static const uint8_t SERVO_MUX = 3;
-static const uint8_t SEVEN_SEGMENT_MUX0 = 4;
+static const uint8_t SEVEN_SEGMENT_B_MUX = 2;
 static const uint8_t SPI_MASTER_MUX = 5;
 static const uint8_t PWM_MUX = 6;
 static const uint8_t TONE_MUX = 9;
