@@ -26,8 +26,11 @@
 
 
 UARTClass Serial;
-#if defined(IO_SIO_BYTE_1)
-UARTClass Serial1(IO_SIO_BYTE_1);
+#if defined(IO_SIO_A_BYTE)
+UARTClass Serial1(IO_SIO_A_BYTE);
+#endif
+#if defined(IO_SIO_B_BYTE)
+UARTClass Serial2(IO_SIO_B_BYTE);
 #endif
 
 int
