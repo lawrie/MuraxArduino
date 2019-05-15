@@ -63,4 +63,8 @@ public:
 
 extern SPIClass SPI;
 
+#if defined(IO_SPI_MASTER_A)
+extern SPIClass SPI11;
+#endif
+
 #endif // _SPI_H

@@ -3,6 +3,10 @@
 
 SPIClass SPI;
 
+#if defined(IO_SPI_MASTER_A)
+SPIClass SPI1(1);
+#endif
+
 SPIClass::SPIClass(uint8_t spi_bus)
     :_spi_num(spi_bus)
     ,_spi(NULL)
@@ -12,13 +16,25 @@ SPIClass::SPIClass(uint8_t spi_bus)
 
 void SPIClass::begin(int8_t ss)
 {
-    // Set SPI pins
-    for(int i=0;i<4;i++) pinMode(SPI_START_PIN + i, (i == 2 ? INPUT : OUTPUT));
-    // Set Mux 5
-    (*(volatile uint32_t*)IO_MUX) |= (1 << SPI_MASTER_MUX);
+    int start_pin = SPI_MASTER_SCLK;
+    int spi_mux = SPI_MASTER_MUX;
 
+#if defined(IO_SPI_MASTER_A)
+    if (_spi_num == 1) {
+      start_pin = SPI_MASTER_A_SCLK;
+      spi_mux = SPI_MASTER_A_MUX;
+    }
+#endif
+
+    // Set SPI pins
+    for(int i=0;i<4;i++) pinMode(start_pin + i, (i == 2 ? INPUT : OUTPUT));
+
+    // Set Mux 5
+    (*(volatile uint32_t*)IO_MUX) |= (1 << spi_mux);
+
+    // Initialise SPI peripheral
     _ss = ss;
-    _spi = (volatile uint32_t *)(IO_SPI_MASTER + (_spi_num * 0x100));
+    _spi = (volatile uint32_t *)(IO_SPI_MASTER + (_spi_num * 0x1000));
     _spi[3] = _divider;
     _spi[4] = 500; // setup
     _spi[5] = 500; // hold
