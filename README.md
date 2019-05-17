@@ -203,23 +203,60 @@ The GPIO peripheral is implemented by the spinal.lib TristateArray. The SB_IO in
 
 #### UART
 
-There is currently a single UART peripheral that maps to the Blackice USB 2 connector on pins 85 and 88. It is accesssed using the Arduino Serial class. There is no flow control.
+A typical config.txt entry for the main uart is:
+
+```
+uart
+  address=0x10000
+  input rxd=UART_RX
+  output txd=UART_TX
+  input reset=GRESET
+  ```
+  
+  and for a second uart is
+  
+  ```
+  uart A
+  address=0x11000
+  input rxd=GPIOA[16]
+  output txd=GPIO[17]
+  mux=13
+  ```
+  
+The main UART peripheral maps to the Blackice USB 2 connector on pins 85 and 88. It is accesssed using the Arduino Serial class. There is no flow control. This peripheral is required. It is used by the bootloader and accessed in Arduino by the Serial class.
+
+Up to two extra uart peripherals, uart A and uart B, corresponding to Serial1 and Serial2, can be configred.
 
 The UART peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/uart).
 
 #### MachineTimer
 
-A 32-bit microsecond machine timer is used for the implementation of the millis, micros, delay and delayMicroseconds methods.
+A typical config.txt entry is:
+
+```
+machineTimer
+  address=0xB0000
+```
+
+A 32-bit microsecond machine timer is used for the implementation of the millis, micros, delay and delayMicroseconds methods, and so is mandatory.
 
 MachineTimer is implemented by [MachineTimer.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/MachineTimer.scala).
 
 #### Mux
 
-There is a Mux peripheral which has 32 pins controlled by a 32-bit register. The mux pins are implemented in [toplevel.v](https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce/toplevel.v).
+A typical config.txt entry is:
+
+```
+mux
+  address=0xD0000
+  width=32
+```
+
+There is a mandatory single Mux peripheral which has 32 pins controlled by a 32-bit register. The mux pins are implemented in [assignments.v](https://github.com/lawrie/VexRiscv/tree/master/scripts/Murax/BlackIce/assignments.v).
 
 It allows FPGA pins to be multiplexed between different peripherals, such as  between GPIO and another peripheral.
 
-12 muxes are currently used as follows:
+12 muxes are currently used as follows, in the configuration described in this README:
 
 ```
 Mux 0 : shiftIn clk on Blackice pin 21
@@ -234,11 +271,23 @@ Mux 8 : PWM on DBG1 pin
 Mux 9 : Tone on Blackice Pin 26
 Mux 10: PWM on Blackice pin 34 on Pmod 11
 Mux 11: PWM Blackice pin 22 on Pmod 11
+Mux 12: Ws2811 Led strip on Pmod 12, Blackice pin 34
+Mux 13: Uart A
+Mux 14: SPA a
 ```
 
 The Mux is implemented by [Mux.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Mux.scala).
 
 #### I2C 
+
+A typical config.txt entry for i2c is:
+
+```
+i2c
+  address=0x70000
+  inout sda=SDA
+  inout scl=SCL
+```
 
 There is a single I2C peripheral on Blackice pins 95 (SDA) and 93 (SCL). 
 
@@ -254,7 +303,33 @@ Here is the I2C master being used to drive an ssd1306 OLED display using Arduino
 
 #### SPI
 
-There is a single SPI master peripheral on Pmod 10. SPI slave is not currently supported.
+Typical config.txt entries are:
+
+```
+spiMaster
+  address=0x60000
+  mux=5
+  output sclk=GPIOB[8]
+  output mosi=GPIOB[9]
+  input miso=GPIOB[10]
+  output ss=GPIOB[11]
+```
+
+and 
+
+```
+spiMaster A
+  address=0x61000
+  mux=14
+  output sclk=GPIOA[28]
+  output mosi=GPIOA[29]
+  input miso=GPIOA[30]
+  output ss=GPIOA[31]
+```
+
+This gives a SPI master peripheral on Pmod 10. SPI slave is not currently supported.
+
+The optional second SPI master corresponds to the Arduino C++ object, SPI1.
 
 The SPI peripheral uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/spi).
 
@@ -264,7 +339,16 @@ Here is harware SPI driving an SSD1306 display using Arduino Examples/SSD1306/ss
 
 #### PulseIn
 
-There is a single PulseIn peripheral with two pulseIn pins on BlackIce pins 34 and 22. It can be used in combination with a trigger pin to drive an HC-SR04 ping sensor.
+A typical config.txt entry for the pulseIn peripheral is:
+
+```
+pulseIn
+  address=0x80000
+  width=2
+  input pins=GPIOB[12], GPIOB[13]
+```
+
+This gives a single PulseIn peripheral with two pulseIn pins on BlackIce pins 34 and 22. It can be used in combination with a trigger pin to drive an HC-SR04 ping sensor.
 
 It is accessed using the Arduino pulseIn and pulseInLong methods. The pin number is the channel (0 or 1).
 
