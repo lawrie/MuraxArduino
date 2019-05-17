@@ -476,9 +476,25 @@ Here is the ShiftOut peripheral driving a 74HC595 8-Bit Shift Register following
 
 #### Interrupts
 
+A typical config.txt entry for the Timer peripheral that supports timer interrupts is:
+
+```
+timer
+  address=0x20000
+```
+
 Timer interrupts are implemented usinfg the MsTimer2 library and the spinal.lib Timer implementation.
 
-The Arduino atachInterrupt and detachInterrupt functions are supported on up to 32 pins. Currently only the two Blackice buttons are support on interrupts 0 and 1.
+A typical entry for the PinInterrupt peripheral, which implements pin-change interrupts, is:
+
+```
+pinInterrupt
+  address=0xE0000
+  width=2
+  input pins=GPIOA[9:8]
+```
+
+The Arduino atachInterrupt and detachInterrupt functions are supported on up to 32 pins. The pinInterrupt config.txt given above supports pin interrupts on just the two Blackice buttons with interrupt numbers 0 and 1.
 
 The PinInterrupt peripheral is implemented by [PinInterrupt.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/PinInterrupt.scala).
 
@@ -486,7 +502,16 @@ Interrupts currently go to an [interrupt function](https://github.com/lawrie/Vex
 
 #### Quadrature
 
-There is a single quadrature peripheral on Pmod 5 that supports encoders and encoder motors.
+A typical config.txt entry for thw Quadrature peripheral is:
+
+```
+quadrature
+  address=0xF8000
+  input quadA=GPIOA[16]
+  input quadB=GPIOA[17]
+```
+
+This gives a single quadrature peripheral on Pmod 5 that supports encoders and encoder motors.
 
 The Quadrature peripheral is multiplexed with GPIO pins 16 and 17 and with the channel 1 7-segment display.
 
@@ -500,9 +525,19 @@ Here is a rotary encoder using the Quadrature peripheral, and displaying an 8-bi
 
 #### Servo
 
+A typical config.txt entry for the Servo peripheral is:
+
+```
+servo
+  address=0xC0000
+  width=4
+  mux=3
+  output pins=GPIOB[16], GPIOB[15], GPIOA[6], GPIOA[7]
+```
+
 The [Servo](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Servo.scala) peripheral supports up to 32 servos.
 
-There is currently one instance with 4 servos on Pmod 12.  A [Digilent CON3 R/C Servo connectors](https://store.digilentinc.com/pmod-con3-r-c-servo-connectors/) can be used.
+The config.txt entry given above supports one instance with 4 servos on Pmod 12.  A [Digilent CON3 R/C Servo connectors](https://store.digilentinc.com/pmod-con3-r-c-servo-connectors/) can be used.
 
 Here is a servo being driven using the Digilent Pmod and Arduino Examples/Servo/Sweep:
 
