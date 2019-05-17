@@ -545,6 +545,16 @@ Here is a servo being driven using the Digilent Pmod and Arduino Examples/Servo/
 
 #### Jtag
 
+A typical config.txt entry for Jtag is:
+
+```
+jtag # Pin mappings not currently used
+  input tck=JTAG_TCK
+  input tms=JTAG_TMS
+  input tdi=JTAG_TDI
+  output tdo=JTAG_TDO
+```
+
 A Jtag debugger for the Risc-V processor is supported on Blackice Pmod 8. Most USB Jtag devices are supported. It has been tested wiith an Anlogic Lychee Tang device.
 
 Jtag uses the [spinal.lib implementation](https://github.com/SpinalHDL/SpinalHDL/tree/dev/lib/src/main/scala/spinal/lib/com/jtag).
@@ -650,6 +660,16 @@ Here is a Anlogic Lychee Tang USB FTDI adapter being used to run a prtogram usin
 ![Jtag debugging](https://forum.mystorm.uk/uploads/default/optimized/1X/06c68dd75fc9211d2693a73475e9c9e1388c6672_1_690x388.jpg)
 
 #### QSPI Analog
+
+A typical entry in config.txt for the QSPIAnalog peripheral is:
+
+```
+qspiAnalog
+  address=0xF0000
+  input qss=QSS
+  input qck=QCK
+  inout qd=QD[3:0]
+```
 
 The 6 10-bit analog channels connected to the Blackice STM32 co-processor are supported via a QspiAnalog peripheral.
 
