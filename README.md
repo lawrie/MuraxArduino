@@ -683,6 +683,28 @@ Here is a Grove analog potentiometer being read using the QSPI Analog sensor and
 
 ![QSPI Analog](https://forum.mystorm.uk/uploads/default/original/1X/92e6d4b50f39754bb0d42011950e8f174aaa3362.jpg)
 
+#### WS2812B LED strips
+
+The WS2811 peripheral supports WS2812B LED strips including Adafruit Neopixels.
+
+A typical entry for the WS2811 peripheral is:
+
+```
+ws2811
+  address=0xD8000
+  maxLeds=16
+  mux=12
+  output dout=GPIOB[12]
+```
+
+Thw WS2811 peripheral is implemented by [Ws2811.scala](https://github.com/lawrie/VexRiscv/blob/master/src/main/scala/vexriscv/demo/Ws2811.scala).
+
+The above config.txt entry gives one instance of the peripheral on Pmod 12, pin 34.
+
+Here it is driving a 16-LED Neopixel ring:
+
+![Neopixel ring](https://forum.mystorm.uk/uploads/default/optimized/1X/336c870196de37744a5b9ac66f7173ad089104be_1_690x388.jpg)
+
 #### SD card
 
 The Blackice SD card can be accessed using the SD library. It is currently set up to use software SPI, with pins SCK = 10, SS = 11, MOSI = 13 and MISO = 8. The first 3 correspond to the switches on the Blackice II board, and the switches must be in the OFF (inward) position for the SD card to work. Pin 8 is button 1, so this must not be used when the SD card is in use.
