@@ -360,7 +360,17 @@ Here is the PulseIn peripheral used with a 3.3v HC-SR04 Ping sensor, reading the
 
 #### PWM
 
-There are currently 3 PWM pins available on BlackIce pin 94 and on thes DBG1 and DONE LED pins.
+A typical config.txt entry is:
+
+```
+pwm
+  address=0x30000
+  width=5
+  output pins=GPIOB[13], GPIOB[12], DONE, DEBUG, GPIOB[14]
+  mux=11,10,8,7,6
+```
+
+There makes 5 PWM pins available on BlackIce II: pin 94 and on the DBG1 and DONE LED pins, and two others.
 
 The  PWM duty cycle is set using the Arduino analogWrite method. The pin number is the PWM channel.
 
@@ -370,7 +380,15 @@ The PWM is peripheral is implemented by [PWM.scala](https://github.com/lawrie/Ve
 
 #### Tone
 
-There is a single Tone peripheral available on Blackice Pmod 12, pin 26.
+A typical entry in config.txt is:
+
+```tone
+  address=0x40000
+  output pin=GPIOB[15]
+  mux=9
+```
+
+This gives a single Tone peripheral available on Blackice Pmod 12, pin 26.
 
 It corresponds to the Arduino tone() and notTone() methods. The pin number on these methods is ignored.
 
@@ -378,7 +396,23 @@ The Tone is peripheral is implemented by [Tone.scala](https://github.com/lawrie/
 
 #### 7-segment LED display
 
-There are two 7-segment peripherals designed to be used with Digilent Pmods, [Pmod SSD](https://store.digilentinc.com/pmod-ssd-seven-segment-display/).
+Typical entries in config.txt are:
+
+```
+sevenSegment A
+  address=0x90000
+  mux=4
+  output digitPin=GPIOB[3]
+  output segPins=GPIOB[7:4], GPIOB[2:0]
+
+sevenSegment B
+  address=0x98000
+  mux=2
+  output digitPin=GPIOA[27]
+  output segPins=GPIOA[19:16], GPIOA[26:24]
+```
+
+This gives two 7-segment peripherals designed to be used with Digilent Pmods, [Pmod SSD](https://store.digilentinc.com/pmod-ssd-seven-segment-display/).
 
 The first (channel 0) is accessed by the SevenSegment class and is on Blackice Pmods 7 and 9.
 
@@ -394,7 +428,17 @@ Here are two 7-segment displays being used:
 
 #### shiftIn
 
-There is a single ShiftIn peripheral on BlackIce Pmod 11, pins 31 and 32.
+A typical entry in config.txt is:
+
+```
+shiftIn
+  address=0xA00000
+  mux=0
+  output clockPin=GPIOA[5]
+  input dataPin=GPIOB[13]
+```
+
+This gives a single ShiftIn peripheral on BlackIce Pmod 11, pins 31 and 32.
 
 It is accessed using the Arduino shiftIn function.
 
@@ -408,7 +452,17 @@ Here is the ShiftIn peripheral being using with a CD4021BE 8-stage static shift 
 
 #### shiftOut
 
-There is a single ShiftOut peripheral on BlackIce Pmod 12, pins 21 and 22.
+A typical entry is config.txt is:
+
+```
+shiftOut
+  address=0x50000
+  output clockPin=GPIOA[6]
+  output dataPin=GPIOA[7]
+  mux=1
+```
+
+This gives a single ShiftOut peripheral on BlackIce Pmod 12, pins 21 and 22.
 
 It is accessed using the Arduino shiftOut function.
 
