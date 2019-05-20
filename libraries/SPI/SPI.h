@@ -21,7 +21,6 @@
 #define SPI_MODE3 0x03
 
 #define SPI_DEFAULT 0
-#define SPI_EXT 1
 
 #define SPI_RX_VALID (1 << 31)
 
@@ -42,9 +41,6 @@ private:
     volatile uint32_t * _spi;
     int8_t _ss;
     uint8_t _divider;
-
-    void set_pin(uint8_t pin);
-    void unset_pin(uint8_t pin);
 
 public:
     SPIClass(uint8_t spi_bus=SPI_DEFAULT);

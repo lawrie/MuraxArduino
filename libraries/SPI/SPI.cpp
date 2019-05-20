@@ -11,7 +11,7 @@ SPIClass::SPIClass(uint8_t spi_bus)
     :_spi_num(spi_bus)
     ,_spi(NULL)
     ,_ss(-1)
-    ,_divider(62) // default is minimum SPI speed, about 400 kHz
+    ,_divider(5)
 {}
 
 void SPIClass::begin(int8_t ss)
@@ -67,22 +67,9 @@ uint8_t SPIClass::transfer(uint8_t data)
     }
 }
 
-void SPIClass::set_pin(uint8_t pin)
-{
-    if (_spi_num == SPI_EXT) {
-        digitalWrite(pin, LOW);
-    }
-}
-
-void SPIClass::unset_pin(uint8_t pin)
-{
-    if (_spi_num == SPI_EXT) {
-        digitalWrite(pin, HIGH);
-    }
-}
-
 void SPIClass::beginTransaction(SPISettings settings) {
     setClockDivider((F_CPU / settings._clock) / 2);
+    setDataMode(settings._dataMode);
     beginTransaction();
 }
 
