@@ -1,0 +1,117 @@
+# Blackice MuraxArduino configuration
+cpu
+  coreFrequency=50 MHz
+  input mainClk=CLK # Not currently used
+  onChipRamSize=10 kB
+  onChipRamHexFile="src/main/ressource/hex/muraxArduino.hex"
+  ioAddress=0xF0000000l
+  ramAddress=0x80000000l
+
+jtag # Pin mappings not currently used
+  input tck=JTAG_TCK
+  input tms=JTAG_TMS
+  input tdi=JTAG_TDI
+  output tdo=JTAG_TDO
+
+sram
+  size=512 kB
+  addressWidth=19 # Needs to be 18 in toplevel.v as in half-words
+  dataWidth=16
+  address=0x90000000l
+  output addr=ADR[17:0]  
+  inout dat=DAT[15:0]
+  output we=RAMWE
+  output oe=RAMOE
+  output cs=RAMCS
+  output lb=RAMLB
+  output ub=RAMUB
+
+gpio A
+  address=0x00000
+  width=32
+  inout gpioA=GPIOA[31:0]
+
+gpio B
+  address=0x08000
+  width=17
+  inout gpioB=GPIOB[16:0]
+
+uart
+  address=0x10000
+  input rxd=UART_RX
+  output txd=UART_TX
+  input reset=GRESET
+
+uart A
+  address=0x11000
+  input rxd=GPIOA[16]
+  output txd=GPIO[17]
+  mux=13
+
+timer
+  address=0x20000
+  
+pwm
+  address=0x30000
+  width=5
+  output pins=GPIOA[13], GPIOA[12], DONE, DEBUG, GPIOB[14]
+  mux=11,10,8,7,6
+
+spiMaster
+  address=0x60000
+  mux=5
+  output sclk=GPIOB[8]
+  output mosi=GPIOB[9]
+  input miso=GPIOB[10]
+  output ss=GPIOB[11]
+
+spiMaster A
+  address=0x61000
+  mux=14
+  output sclk=GPIOA[28]
+  output mosi=GPIOA[29]
+  input miso=GPIOA[30]
+  output ss=GPIOA[31]
+
+i2c
+  address=0x70000
+  inout sda=SDA
+  inout scl=SCL
+
+sevenSegment A
+  address=0x90000
+  mux=4
+  output digitPin=GPIOB[3]
+  output segPins=GPIOB[7:4], GPIOB[2:0]
+
+sevenSegment B
+  address=0x98000
+  mux=2
+  output digitPin=GPIOA[27]
+  output segPins=GPIOA[19:16], GPIOA[26:24]
+
+
+machineTimer
+  address=0xB0000
+
+mux
+  address=0xD0000
+  width=32
+
+ws2811
+  address=0xD8000
+  maxLeds=16
+  mux=12
+  output dout=GPIOB[12]
+
+pinInterrupt
+  address=0xE0000
+  width=2
+  input pins=GPIOA[9:8]
+
+qspiAnalog
+  address=0xF0000
+  input qss=QSS
+  input qck=QCK
+  inout qd=QD[3:0]
+

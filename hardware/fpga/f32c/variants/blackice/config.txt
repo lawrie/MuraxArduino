@@ -1,0 +1,140 @@
+# Blackice MuraxArduino configuration
+cpu
+  coreFrequency=50 MHz
+  input mainClk=CLK # Not currently used
+  onChipRamSize=10 kB
+  onChipRamHexFile="src/main/ressource/hex/muraxArduino.hex"
+  ioAddress=0xF0000000l
+  ramAddress=0x80000000l
+
+jtag # Pin mappings not currently used
+  input tck=JTAG_TCK
+  input tms=JTAG_TMS
+  input tdi=JTAG_TDI
+  output tdo=JTAG_TDO
+
+sram
+  size=512 kB
+  addressWidth=19 # Needs to be 18 in toplevel.v as in half-words
+  dataWidth=16
+  address=0x90000000l
+  output addr=ADR[17:0]  
+  inout dat=DAT[15:0]
+  output we=RAMWE
+  output oe=RAMOE
+  output cs=RAMCS
+  output lb=RAMLB
+  output ub=RAMUB
+
+gpio A
+  address=0x00000
+  width=32
+  inout gpioA=GPIOA[31:0]
+
+gpio B
+  address=0x08000
+  width=17
+  inout gpioB=GPIOB[16:0]
+
+uart
+  address=0x10000
+  input rx=UART_RX
+  output tx=UART_TX
+  input reset=GRESET
+
+timer
+  address=0x20000
+  
+pwm
+  address=0x30000
+  width=5
+  output pins=GPIOA[13], GPIOA[12], DONE, DEBUG, GPIOB[14]
+  mux=11,10,8,7,6
+
+tone
+  address=0x40000
+  output pin=GPIOB[15]
+  mux=9
+
+shiftOut
+  address=0x50000
+  output clockPin=GPIOA[6]
+  output dataPin=GPIOA[7]
+  mux=1
+
+spiMaster
+  address=0x60000
+  mux=5
+  output sclk=GPIOB[8]
+  output mosi=GPIOB[9]
+  input miso=GPIOB[10]
+  output ss=GPIOB[11]
+
+i2c
+  address=0x70000
+  inout sda=SDA
+  inout scl=SCL
+
+pulseIn
+  address=0x80000
+  width=2
+  input pins=GPIOB[12], GPIOB[13]
+  
+sevenSegment A
+  address=0x90000
+  mux=4
+  output digitPin=GPIOB[3]
+  output segPins=GPIOB[7:4], GPIOB[2:0]
+
+sevenSegment B
+  address=0x98000
+  mux=2
+  output digitPin=GPIOA[27]
+  output segPins=GPIOA[19:16], GPIOA[26:24]
+
+shiftIn
+  address=0xA00000
+  mux=0
+  output clockPin=GPIOA[5]
+  input dataPin=GPIOB[13]
+
+ps2
+  address=0xA80000
+  input ps2Clk=GPIOB[15]
+  input ps2Data=GPIOA[7]
+
+machineTimer
+  address=0xB0000
+
+servo
+  address=0xC0000
+  width=4
+  mux=3
+  output pins=GPIOB[16], GPIOB[15], GPIOA[6], GPIOA[7]
+
+mux
+  address=0xD0000
+  width=32
+
+ws2811
+  address=0xD8000
+  maxLeds=16
+  mux=12
+  output dout=GPIOB[12]
+
+pinInterrupt
+  address=0xE0000
+  width=2
+  input pins=GPIOA[9:8]
+
+qspiAnalog
+  address=0xF0000
+  input qss=QSS
+  input qck=QCK
+  inout qd=QD[3:0]
+
+quadrature
+  address=0xF8000
+  input quadA=GPIOA[16]
+  input quadB=GPIOA[17]
+
